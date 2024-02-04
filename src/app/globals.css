@@ -16,3 +16,6 @@
 .bebas-font {
   font-family: "Bebas Neue", sans-serif;
 }
+.border {
+  box-shadow: rgba(3, 102, 214, 0.6) 10px 10px 10px 3px;
+}
