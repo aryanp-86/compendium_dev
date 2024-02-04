@@ -1,5 +1,6 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import Image from "next/image";
 import { Dialog } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 
@@ -16,18 +17,19 @@ export default function HeroSection() {
 
   return (
     <div className="bg-white">
-      <header className="absolute inset-x-0 top-0 z-50">
+      <header className="bg-gray-50 inset-x-0 top-0 z-50 fixed">
         <nav
           className="flex items-center justify-between p-6 lg:px-8"
           aria-label="Global"
         >
           <div className="flex lg:flex-1">
             <a href="#" className="-m-1.5 p-1.5">
-              <span className="sr-only">Your Company</span>
-              <img
-                className="h-8 w-auto"
-                src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-                alt=""
+              <span className="sr-only">VIT Logo</span>
+              <Image
+                src="https://i.ibb.co/9whb0wS/vit-logo.png"
+                width={32}
+                height={32}
+                alt="vit-logo"
               />
             </a>
           </div>
@@ -46,7 +48,7 @@ export default function HeroSection() {
               <a
                 key={item.name}
                 href={item.href}
-                className="text-sm font-semibold leading-6 text-gray-900"
+                className="text-base font-semibold leading-6 tracking-tight text-gray-900"
               >
                 {item.name}
               </a>
