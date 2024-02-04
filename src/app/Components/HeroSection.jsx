@@ -16,12 +16,21 @@ const navigation = [
 
 export default function HeroSection() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [scroll, setScroll] = useState(false);
+
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      setScroll(window.scrollY > 10);
+    });
+  }, []);
 
   return (
     <div className="main w-full h-screen">
       <YourSvgComponent />
       <SvgComponent2 />
-      <header className="inset-x-0 top-0 z-50 fixed">
+      <header
+        className={`inset-x-0 top-0 z-50 -mb-16 ${scroll ? "sticky" : ""}`}
+      >
         <nav
           className="flex items-center justify-between p-6 lg:px-8"
           aria-label="Global"
@@ -52,7 +61,7 @@ export default function HeroSection() {
               <a
                 key={item.name}
                 href={item.href}
-                className="text-base font-semibold leading-6 tracking-tight text-gray-800"
+                className="text-base font-semibold leading-6 tracking-tight"
               >
                 {item.name}
               </a>

@@ -1,5 +1,4 @@
 import React from "react";
-import SvgComponent3 from "./SvgComponent3";
 
 const Gallery = () => {
   return (

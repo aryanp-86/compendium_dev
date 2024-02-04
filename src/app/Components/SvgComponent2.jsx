@@ -5,8 +5,8 @@ const SvgComponent2 = () => {
     <svg
       xmlns="http://www.w3.org/2000/svg"
       version="1.1"
-      xmlnsXlink="http://www.w3.org/1999/xlink"
-      xmlnsSvgjs="http://svgjs.dev/svgjs"
+      xmlnsxlink="http://www.w3.org/1999/xlink"
+      xmlnssvgjs="http://svgjs.dev/svgjs"
       viewBox="0 0 1422 800"
       className="absolute -z-20"
     >
@@ -31,10 +31,10 @@ const SvgComponent2 = () => {
         </linearGradient>
       </defs>
       <g
-        stroke-width="2"
+        strokeWidth="2"
         stroke="url(#oooscillate-grad)"
         fill="none"
-        stroke-linecap="round"
+        strokeLinecap="round"
       >
         <path
           d="M 0 572 Q 355.5 -100 711 400 Q 1066.5 900 1422 572"
