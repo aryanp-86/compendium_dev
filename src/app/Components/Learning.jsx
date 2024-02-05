@@ -5,18 +5,18 @@ import animation from "../../assets/anime.json";
 
 const Learning = () => {
   return (
-    <section className="mt-28">
+    <section className="mt-28 learning overflow-y-clip">
       <div className="px-4 py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16">
-        <div className="mx-auto text-center">
-          <h1 className="text-3xl font-extrabold  bebas-font  lg:text-5xl">
+        <div className="mx-auto text-center overflow-y-clip">
+          <h1 className="text-3xl font-extrabold  bebas-font  lg:text-5xl learning1">
             Comp Bit and Bytes Editorial
           </h1>
-          <strong className="font-extrabold tracking-tighter text-5xl mt-3 text-red-700 sm:block">
+          <strong className="font-extrabold tracking-tighter text-5xl mt-3 text-red-700 sm:block learning2">
             {" "}
             Collaborative Learning to Strengthen Outcomes
           </strong>
 
-          <p className="mt-16 text-gray-800 font-medium tracking-wide max-w-4xl text-justify">
+          <p className="mt-16 text-gray-800 font-medium tracking-wide max-w-4xl text-justify learning3">
             Collaborative learning is a strategy used within special interest
             groups of learners & aims to improve their learning experience. This
             type of learning strategy uses small special-interest group tasks
@@ -28,7 +28,7 @@ const Learning = () => {
         <div className="grid grid-cols-3">
           <div className="mt-8 max-w-4xl grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-2 mr-auto col-span-2">
             <a
-              className="block rounded-xl border border-gray-800 p-8 shadow-xl transition hover:border-pink-500/10 hover:shadow-pink-500/10"
+              className="block rounded-xl border border-gray-800 p-8 shadow-xl transition hover:border-pink-500/10 hover:shadow-pink-500/10 block1"
               href="/services/digital-campaigns"
             >
               <svg
@@ -61,7 +61,7 @@ const Learning = () => {
             </a>
 
             <a
-              className="block rounded-xl border border-gray-800 p-8 shadow-xl transition hover:border-pink-500/10 hover:shadow-pink-500/10"
+              className="block rounded-xl border border-gray-800 p-8 shadow-xl transition hover:border-pink-500/10 hover:shadow-pink-500/10 block2"
               href="/services/digital-campaigns"
             >
               <svg
@@ -94,7 +94,7 @@ const Learning = () => {
             </a>
 
             <a
-              className="block rounded-xl border border-gray-800 p-8 shadow-xl transition hover:border-pink-500/10 hover:shadow-pink-500/10 col-span-2"
+              className="block rounded-xl border border-gray-800 p-8 shadow-xl transition hover:border-pink-500/10 hover:shadow-pink-500/10 col-span-2 block3"
               href="/services/digital-campaigns"
             >
               <svg

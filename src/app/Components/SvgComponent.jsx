@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 
 const YourSvgComponent = () => {
@@ -8,7 +9,7 @@ const YourSvgComponent = () => {
       xmlnsxlink="http://www.w3.org/1999/xlink"
       xmlnssvgjs="http://svgjs.dev/svgjs"
       viewBox="0 0 1422 800"
-      className="absolute -z-10"
+      className="absolute -z-10 svg1"
     >
       <defs>
         <radialGradient id="cccircular-grad" r="50%" cx="50%" cy="50%">

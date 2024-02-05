@@ -1,10 +1,11 @@
+"use client";
 import React from "react";
 
 const Gallery = () => {
   return (
     <>
-      <div className="grid grid-cols-6 bg-black">
-        <div className="flex items-center justify-center max-w-sm h-screen m-auto lg:col-span-2">
+      <div className="grid grid-cols-6 bg-black gallery overflow-y-clip">
+        <div className="flex items-center justify-center max-w-sm h-screen m-auto lg:col-span-2 img1">
           <article className="relative overflow-hidden rounded-lg shadow transition border">
             <img
               alt="Office"
@@ -25,7 +26,7 @@ const Gallery = () => {
             </div>
           </article>
         </div>
-        <div className="flex items-center justify-center max-w-lg h-screen m-auto lg:col-span-2 lg:pt-32">
+        <div className="flex items-center justify-center max-w-lg h-screen m-auto lg:col-span-2 lg:pt-32 img2">
           <article className="relative overflow-hidden rounded-lg shadow transition  border">
             <img
               alt="Office"
@@ -46,7 +47,7 @@ const Gallery = () => {
             </div>
           </article>
         </div>
-        <div className="flex items-center justify-center max-w-sm h-screen m-auto lg:col-span-2 lg:pt-64">
+        <div className="flex items-center justify-center max-w-sm h-screen m-auto lg:col-span-2 lg:pt-64 img3">
           <article className="relative overflow-hidden rounded-lg shadow transition border">
             <img
               alt="Office"

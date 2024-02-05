@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 
 const SvgComponent4 = () => {
@@ -8,7 +10,7 @@ const SvgComponent4 = () => {
       xmlnsxlink="http://www.w3.org/1999/xlink"
       xmlnssvgjs="http://svgjs.dev/svgjs"
       viewBox="0 0 1422 800"
-      className="absolute -z-50"
+      className="absolute -z-50 svg4"
     >
       <g
         fill="hsl(354, 77%, 55%)"
