@@ -1,17 +1,18 @@
+"use client";
 import React from "react";
 import SvgComponent4 from "./SvgComponent4";
 
 const Strategies = () => {
   return (
-    <section className="text-gray-800">
+    <section className="text-gray-800 strategy overflow-y-clip">
       <SvgComponent4 />
-      <div className="px-4 py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16 flex flex-col items-center justify-center">
-        <div className="text-center text-red-700 z-50">
-          <h2 className="text-3xl font-bold sm:text-4xl">
+      <div className="px-4 py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16 flex flex-col items-center justify-center overflow-y-clip">
+        <div className="text-center text-red-700 ">
+          <h2 className="text-3xl font-bold sm:text-4xl strategy1">
             Collaborative Learning Strategies
           </h2>
 
-          <p className="mt-4 text-gray-800 font-bold text-xl text-justify max-w-3xl">
+          <p className="mt-4 text-gray-800 font-bold text-xl text-justify max-w-3xl strategy2">
             If you are trying to use the same collaborative learning strategies
             repeatedly with no results, try some of these with clear examples of
             how you can implement them:
@@ -19,7 +20,7 @@ const Strategies = () => {
         </div>
 
         <div className="mt-8 grid grid-cols-1 gap-8 md:mt-16 md:grid-cols-2 md:gap-12 lg:grid-cols-3">
-          <div className="flex items-start gap-4 bg-gray-50 rounded-xl border border-gray-800 p-8 shadow-xl">
+          <div className="flex items-start gap-4 bg-gray-50 rounded-xl border border-gray-800 p-8 shadow-xl boxl">
             <span className="shrink-0 rounded-lg bg-gray-200 p-4">
               <svg
                 className="h-5 w-5"
@@ -52,7 +53,7 @@ const Strategies = () => {
             </div>
           </div>
 
-          <div className="flex items-start gap-4 bg-gray-50 rounded-xl border border-gray-800 p-8 shadow-xl">
+          <div className="flex items-start gap-4 bg-gray-50 rounded-xl border border-gray-800 p-8 shadow-xl boxc">
             <span className="shrink-0 rounded-lg bg-gray-200 p-4">
               <svg
                 className="h-5 w-5"
@@ -85,7 +86,7 @@ const Strategies = () => {
             </div>
           </div>
 
-          <div className="flex items-start gap-4 bg-gray-50 rounded-xl border border-gray-800 p-8 shadow-xl">
+          <div className="flex items-start gap-4 bg-gray-50 rounded-xl border border-gray-800 p-8 shadow-xl boxr">
             <span className="shrink-0 rounded-lg bg-gray-200 p-4">
               <svg
                 className="h-5 w-5"
@@ -119,7 +120,7 @@ const Strategies = () => {
             </div>
           </div>
 
-          <div className="flex items-start gap-4 bg-gray-50 rounded-xl border border-gray-800 p-8 shadow-xl">
+          <div className="flex items-start gap-4 bg-gray-50 rounded-xl border border-gray-800 p-8 shadow-xl boxl">
             <span className="shrink-0 rounded-lg bg-gray-200 p-4">
               <svg
                 className="h-5 w-5"
@@ -154,7 +155,7 @@ const Strategies = () => {
             </div>
           </div>
 
-          <div className="flex items-start gap-4 bg-gray-50 rounded-xl border border-gray-800 p-8 shadow-xl">
+          <div className="flex items-start gap-4 bg-gray-50 rounded-xl border border-gray-800 p-8 shadow-xl boxc">
             <span className="shrink-0 rounded-lg bg-gray-200 p-4">
               <svg
                 className="h-5 w-5"
@@ -187,7 +188,7 @@ const Strategies = () => {
             </div>
           </div>
 
-          <div className="flex items-start gap-4 bg-gray-50 rounded-xl border border-gray-800 p-8 shadow-xl">
+          <div className="flex items-start gap-4 bg-gray-50 rounded-xl border border-gray-800 p-8 shadow-xl boxr">
             <span className="shrink-0 rounded-lg bg-gray-200 p-4">
               <svg
                 className="h-5 w-5"

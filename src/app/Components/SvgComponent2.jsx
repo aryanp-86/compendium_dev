@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 
 const SvgComponent2 = () => {
@@ -8,7 +9,7 @@ const SvgComponent2 = () => {
       xmlnsxlink="http://www.w3.org/1999/xlink"
       xmlnssvgjs="http://svgjs.dev/svgjs"
       viewBox="0 0 1422 800"
-      className="absolute -z-20"
+      className="absolute -z-20 svg2"
     >
       <defs>
         <linearGradient
@@ -19,13 +20,13 @@ const SvgComponent2 = () => {
           id="oooscillate-grad"
         >
           <stop
-            stop-color="hsl(206, 75%, 49%)"
-            stop-opacity="1"
+            stopColor="hsl(206, 75%, 49%)"
+            stopOpacity="1"
             offset="0%"
           ></stop>
           <stop
-            stop-color="hsl(331, 90%, 56%)"
-            stop-opacity="1"
+            stopColor="hsl(331, 90%, 56%)"
+            stopOpacity="1"
             offset="100%"
           ></stop>
         </linearGradient>
