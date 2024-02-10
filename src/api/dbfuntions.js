@@ -1,3 +1,4 @@
+"use server";
 import { Pool } from "pg";
 import "dotenv/config";
 
@@ -25,30 +26,74 @@ async function initiateDB() {
    CREATE TABLE IF NOT EXISTS facultyawards(
         srno serial,
         name varchar(30) NOT NULL,
-        awardname varchar(20) NOT NULL,
-        awardingbody varchar(20) NOT NULL,
+        awardname varchar(40) NOT NULL,
+        awardingbody varchar(40),
         date date NOT NULL,
-        type varchar(10) NOT NULL,
-        place varchar(10)
+        type varchar(20) NOT NULL,
+        place varchar(20)
     );`;
 
   const facultyBooks = `
     CREATE TABLE IF NOT EXISTS facultybooks(
       srno serial,
-      title varchar(30) NOT NULL,
-      chapter varchar(30) NOT NULL,
-      pauth varchar(30) NOT NULL,
-      sauth varchar(30),
-      edition varchar(10),
-      edited varchar(20),
-      publisher varchar(30) NOT NULL,
-      place varchar(30),
+      title TEXT NOT NULL,
+      chapter TEXT ,
+      pauth TEXT NOT NULL,
+      sauth TEXT,
+      edition TEXT,
+      edited TEXT,
+      publisher TEXT ,
+      place TEXT,
       date date NOT NULL,
-      isbnno varchar(30)
+      isbnno TEXT
     )
     `;
 
-  runQuery(facultyBooks);
+  const facultyHIndex = `
+  CREATE TABLE IF NOT EXISTS facultyhindex(
+    srno serial,
+    name varchar(30) NOT NULL,
+    googlehindex INT,
+    googlecitations INT,
+    googlepersonalif INT,
+    scopushindex INT,
+    scopuscitations INT,
+    date date
+  );
+  `;
+
+  const facultyWorkshops = `
+  CREATE TABLE IF NOT EXISTS facultyworkshops(
+    srno SERIAL,
+    name TEXT,
+    type VARCHAR(30),
+    sponser TEXT,
+    facultyname VARCHAR(30),
+    date DATE,
+    place VARCHAR(20),
+    subject TEXT,
+    notracks INT,
+    noparticipants INT
+  );
+  `;
+
+  runQuery(facultyWorkshops);
 }
 
-export { initiateDB };
+async function getData() {
+  const query = `
+  SELECT * from facultyawards ORDER BY srno;
+  SELECT * from facultybooks ORDER BY srno;
+  SELECT * from facultyhindex ORDER BY srno;
+  SELECT * from facultyworkshops ORDER BY srno;
+  `;
+  const res = await runQuery(query);
+  return {
+    awards: res[0].rows,
+    books: res[1].rows,
+    hIndex: res[2].rows,
+    workshop: res[3].rows,
+  };
+}
+
+export { initiateDB, getData };
