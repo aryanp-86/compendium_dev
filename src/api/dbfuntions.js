@@ -93,7 +93,20 @@ async function initiateDB() {
   )
   `;
 
-  runQuery(studentAwards);
+  // Year	Div	PRN:	Name of student	Title of certification	Certifying organization
+  const studentCertification = `
+  CREATE TABLE IF NOT EXISTS studentcertification(
+    srno SERIAL,
+    class TEXT,
+    div VARCHAR(5),
+    PRN INT,
+    name TEXT,
+    certification TEXT,
+    organization TEXT
+  )
+  `;
+
+  runQuery(studentCertification);
 }
 
 async function getFacultyData() {
