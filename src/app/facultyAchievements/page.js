@@ -89,7 +89,6 @@ export default function FacultyAchievement() {
           pauth,
           sauth,
           edition,
-          edited,
           publisher,
           place,
           date,
@@ -118,15 +117,65 @@ export default function FacultyAchievement() {
       );
       return booksTable;
     }
-
+    function handleHIndex(hIndex) {
+      const hIndexTable = hIndex.map(
+        ({
+          name,
+          googlehindex,
+          googlecitations,
+          googlepersonalif,
+          scopushindex,
+          scopuscitations,
+          date,
+        }) => {
+          return (
+            <>
+              <tr>
+                <td className=" px-4 py-2 text-gray-700" rowSpan={3}>
+                  {name}
+                </td>
+                <td className=" px-4 py-2 text-gray-700">H-Index :</td>
+                <td className=" px-4 py-2 text-gray-700">{googlehindex}</td>
+                <td className=" px-4 py-2 text-gray-700">{scopushindex}</td>
+                <td className=" px-4 py-2 text-gray-700" rowSpan={3}>
+                  {date?.getFullYear()}
+                </td>
+              </tr>
+              <tr>
+                <td className=" px-4 py-2 text-gray-700">Citations : </td>
+                <td className=" px-4 py-2 text-gray-700">
+                  {googlecitations || "-"}
+                </td>
+                <td className=" px-4 py-2 text-gray-700">
+                  {scopuscitations || "-"}
+                </td>
+              </tr>
+              <tr>
+                <td>Personal IF : </td>
+                <td>-</td>
+                <td className=" px-4 py-2 text-gray-700">{googlepersonalif}</td>
+              </tr>
+            </>
+          );
+        }
+      );
+      console.log(hIndexTable);
+      return hIndexTable;
+    }
     const callData = async () => {
       const res = await getData();
-
+      console.log(res);
       const awardsTable = handleAwards(res.awards);
       const booksTable = handleBooks(res.books);
+      const hIndexTable = handleHIndex(res.hIndex);
       console.log(booksTable);
       setData((prev) => {
-        return { ...prev, awards: awardsTable, books: booksTable };
+        return {
+          ...prev,
+          awards: awardsTable,
+          books: booksTable,
+          hIndex: hIndexTable,
+        };
       });
     };
 
@@ -135,18 +184,14 @@ export default function FacultyAchievement() {
   return (
     /**{
     "srno": 1,
-    "title": "Applied Computer Vision and Soft Computing with Interpretable AI",
-    "chapter": "A Resemblance of Convolutional Neural Network Architectures for Classifying Ferrograph Images",
-    "pauth": "S.M.Jaybhaye",
-    "sauth": "V.A. Vaidya, M.D.Jaybhaye, S.R.Shinde",
-    "edition": "First",
-    "edited": "",
-    "publisher": "Chapman and Hall/CRC",
-    "place": "New York",
-    "date": "2022-12-31T18:30:00.000Z",
-    "isbnno": "chapter-9781003359456"
-} 
- */
+    "name": "Dr G D Bhutkar",
+    "googlehindex": 15,
+    "googlecitations": 577,
+    "googlepersonalif": 5,
+    "scopushindex": 5,
+    "scopuscitations": 9,
+    "date": "2023-08-28T18:30:00.000Z"
+} */
     <div>
       <div className="p-5">
         <div className="rounded-lg border border-gray-200">
@@ -295,6 +340,110 @@ export default function FacultyAchievement() {
               </thead>
 
               <tbody className="divide-y divide-gray-200">{data.books}</tbody>
+            </table>
+          </div>
+
+          <div className="rounded-b-lg border-t border-gray-200 px-4 py-2">
+            <ol className="flex justify-end gap-1 text-xs font-medium">
+              <li>
+                <a
+                  href="#"
+                  className="inline-flex size-8 items-center justify-center rounded border border-gray-100 bg-white text-gray-900 "
+                >
+                  <span className="sr-only">Prev Page</span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-3 w-3"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href="#"
+                  className="block size-8 rounded border border-gray-100 bg-white text-center leading-8 text-gray-900"
+                >
+                  1
+                </a>
+              </li>
+
+              <li className="block size-8 rounded border-blue-600 bg-blue-600 text-center leading-8 text-white">
+                2
+              </li>
+
+              <li>
+                <a
+                  href="#"
+                  className="block size-8 rounded border border-gray-100 bg-white text-center leading-8 text-gray-900"
+                >
+                  3
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href="#"
+                  className="block size-8 rounded border border-gray-100 bg-white text-center leading-8 text-gray-900"
+                >
+                  4
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href="#"
+                  className="inline-flex size-8 items-center justify-center rounded border border-gray-100 bg-white text-gray-900 "
+                >
+                  <span className="sr-only">Next Page</span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-3 w-3"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                </a>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+      <div className="p-5">
+        <div className="rounded-lg border border-gray-200">
+          <div className="overflow-x-clip rounded-t-md">
+            <table className="min-w-full divide-y-2 divide-gray-200 bg-white text-sm">
+              <thead className="text-left">
+                <tr>
+                  <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+                    Name
+                  </th>
+                  <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900"></th>
+                  <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+                    google
+                  </th>
+                  <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+                    scopus
+                  </th>
+                  <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+                    date
+                  </th>
+                </tr>
+              </thead>
+
+              <tbody className="divide-y divide-gray-200">{data.hIndex}</tbody>
             </table>
           </div>
 
