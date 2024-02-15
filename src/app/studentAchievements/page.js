@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { getFacultyData } from "@/api/dbfuntions";
+import { getData } from "@/api/dbfuntions";
 import FacultyHero from "../Components/FacultyHero";
 
 export default function FacultyAchievement() {
@@ -164,7 +164,7 @@ export default function FacultyAchievement() {
       return hIndexTable;
     }
     const callData = async () => {
-      const res = await getFacultyData();
+      const res = await getData();
       console.log(res);
       const awardsTable = handleAwards(res.awards);
       const booksTable = handleBooks(res.books);
@@ -200,24 +200,31 @@ export default function FacultyAchievement() {
             <table className="min-w-full divide-x-2  text-lg border-r-2">
               <thead className="text-left border-4 border-slate-600">
                 <tr className="underline underline-offset-4">
+                  {/* class	div	prn	name	eventname	members	date	organizer	prize */}
                   <th className="whitespace-nowrap px-4 py-2 font-bold text-gray-900">
-                    Name
+                    Class
                   </th>
 
                   <th className="whitespace-nowrap px-4 py-2 font-bold text-gray-900">
-                    Award
+                    Div
                   </th>
                   <th className="whitespace-nowrap px-4 py-2 font-bold text-gray-900">
-                    Awarding Body
+                    PRN
+                  </th>
+                  <th className="whitespace-nowrap px-4 py-2 font-bold text-gray-900">
+                    Event Name
+                  </th>
+                  <th className="whitespace-nowrap px-4 py-2 font-bold text-gray-900">
+                    Members
                   </th>
                   <th className="whitespace-nowrap px-4 py-2 font-bold text-gray-900">
                     Date
                   </th>
                   <th className="whitespace-nowrap px-4 py-2 font-bold text-gray-900">
-                    Type
+                    Organizer
                   </th>
                   <th className="whitespace-nowrap px-4 py-2 font-bold text-gray-900">
-                    Place
+                    Prize
                   </th>
                 </tr>
               </thead>
