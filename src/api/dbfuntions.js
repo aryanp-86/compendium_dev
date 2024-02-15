@@ -117,11 +117,8 @@ async function getStudentData() {
   `;
   const res = await runQuery(query);
   return {
-    awards: res[0].rows,
-    books: res[1].rows,
-    hIndex: res[2].rows,
-    workshop: res[3].rows,
+    awards: res.rows,
   };
 }
 
-export { initiateDB, getFacultyData };
+export { initiateDB, getFacultyData, getStudentData };

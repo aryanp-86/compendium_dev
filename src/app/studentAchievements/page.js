@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { getData } from "@/api/dbfuntions";
+import { getStudentData } from "@/api/dbfuntions";
 import FacultyHero from "../Components/FacultyHero";
 
 export default function FacultyAchievement() {
@@ -12,111 +12,108 @@ export default function FacultyAchievement() {
   });
 
   useEffect(() => {
+    /**{
+    "class": "TY",
+    "div": "C",
+    "prn": 12111395,
+    "name": "Niranjan Langade",
+    "eventname": "Nexus 2.0",
+    "members": "Niranjan Langade (Team Leader)",
+    "date": "2023-07-28T18:30:00.000Z",
+    "organizer": "BIT,Sindri",
+    "prize": "Runner Up"
+} */
+    // function handleAwards(awards) {
+    //   const fwiseawards = {};
+    //   const awardsTable = [];
+
+    //   for (const faculty in fwiseawards) {
+    //     console.log(faculty);
+
+    //     for (let i = 0; i < fwiseawards[faculty].length; i++) {
+    //       const { name, awardname, awardingbody, date, type, place } =
+    //         fwiseawards[faculty][i];
+    //       const [year, month, day] = date
+    //         .toISOString()
+    //         .split("T")[0]
+    //         .split("-");
+
+    //       const formattedDate = `${day}-${month}-${year}`;
+    //       if (i === 0) {
+    //         awardsTable.push(
+    //           <tr>
+    //             <td
+    //               rowSpan={fwiseawards[faculty].length}
+    //               className="whitespace px-4 py-2 font-medium text-gray-900 "
+    //             >
+    //               {name}
+    //             </td>
+    //             <td className=" px-4 py-2 text-gray-700 max-w-40">
+    //               {awardname}
+    //             </td>
+    //             <td className=" px-4 py-2 text-gray-700">{awardingbody}</td>
+    //             <td className="whitespace-nowrap px-4 py-2 text-gray-700">
+    //               {formattedDate}
+    //             </td>
+    //             <td className="whitespace-nowrap px-4 py-2 text-gray-700">
+    //               {type}
+    //             </td>
+    //             <td className="whitespace-nowrap px-4 py-2 text-gray-700">
+    //               {place}
+    //             </td>
+    //           </tr>
+    //         );
+    //       } else {
+    //         awardsTable.push(
+    //           <tr>
+    //             {/* <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900"></td> */}
+    //             <td className=" px-4 py-2 text-gray-700 max-w-40">
+    //               {awardname}
+    //             </td>
+    //             <td className="whitespace-nowrap px-4 py-2 text-gray-700 max-w-xs">
+    //               {awardingbody}
+    //             </td>
+    //             <td className="whitespace-nowrap px-4 py-2 text-gray-700">
+    //               {formattedDate}
+    //             </td>
+    //             <td className="whitespace-nowrap px-4 py-2 text-gray-700">
+    //               {type}
+    //             </td>
+    //             <td className="whitespace-nowrap px-4 py-2 text-gray-700">
+    //               {place}
+    //             </td>
+    //           </tr>
+    //         );
+    //       }
+    //     }
+    //   }
+    //   return awardsTable;
+    // }
     function handleAwards(awards) {
-      const fwiseawards = {};
-      const awardsTable = [];
-      awards.forEach((award) => {
-        const { name } = award;
-        if (name in fwiseawards) fwiseawards[name].push(award);
-        else fwiseawards[name] = [award];
+      const awardsTable = awards.map((award) => {
+        const { div, prn, name, eventname, members, date, organizer, prize } =
+          award;
+
+        const [year, month, day] = date.toISOString().split("T")[0].split("-");
+
+        const formattedDate = `${day}-${month}-${year}`;
+        return (
+          <tr>
+            <td className=" px-4 py-2 text-gray-700 ">{award.class}</td>
+            <td className=" px-4 py-2 text-gray-700">{div}</td>
+            <td className=" px-4 py-2 text-gray-700">{prn}</td>
+            <td className=" px-4 py-2 text-gray-700">{name}</td>
+            <td className=" px-4 py-2 text-gray-700">{eventname}</td>
+            <td className=" px-4 py-2 text-gray-700">
+              {members.replace(/\\n/g, ", ")}
+            </td>
+            <td className=" px-4 py-2 text-gray-700">{formattedDate}</td>
+            <td className=" px-4 py-2 text-gray-700">{organizer}</td>
+            <td className=" px-4 py-2 text-gray-700">{prize}</td>
+          </tr>
+        );
       });
-      for (const faculty in fwiseawards) {
-        console.log(faculty);
-
-        for (let i = 0; i < fwiseawards[faculty].length; i++) {
-          const { name, awardname, awardingbody, date, type, place } =
-            fwiseawards[faculty][i];
-          const [year, month, day] = date
-            .toISOString()
-            .split("T")[0]
-            .split("-");
-
-          const formattedDate = `${day}-${month}-${year}`;
-          if (i === 0) {
-            awardsTable.push(
-              <tr>
-                <td
-                  rowSpan={fwiseawards[faculty].length}
-                  className="whitespace px-4 py-2 font-medium text-gray-900 "
-                >
-                  {name}
-                </td>
-                <td className=" px-4 py-2 text-gray-700 max-w-40">
-                  {awardname}
-                </td>
-                <td className=" px-4 py-2 text-gray-700">{awardingbody}</td>
-                <td className="whitespace-nowrap px-4 py-2 text-gray-700">
-                  {formattedDate}
-                </td>
-                <td className="whitespace-nowrap px-4 py-2 text-gray-700">
-                  {type}
-                </td>
-                <td className="whitespace-nowrap px-4 py-2 text-gray-700">
-                  {place}
-                </td>
-              </tr>
-            );
-          } else {
-            awardsTable.push(
-              <tr>
-                {/* <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900"></td> */}
-                <td className=" px-4 py-2 text-gray-700 max-w-40">
-                  {awardname}
-                </td>
-                <td className="whitespace-nowrap px-4 py-2 text-gray-700 max-w-xs">
-                  {awardingbody}
-                </td>
-                <td className="whitespace-nowrap px-4 py-2 text-gray-700">
-                  {formattedDate}
-                </td>
-                <td className="whitespace-nowrap px-4 py-2 text-gray-700">
-                  {type}
-                </td>
-                <td className="whitespace-nowrap px-4 py-2 text-gray-700">
-                  {place}
-                </td>
-              </tr>
-            );
-          }
-        }
-      }
       return awardsTable;
-    }
-    function handleBooks(books) {
-      const booksTable = books.map(
-        ({
-          title,
-          chapter,
-          pauth,
-          sauth,
-          edition,
-          publisher,
-          place,
-          date,
-          isbnno,
-        }) => {
-          const [year, month, day] = date
-            .toISOString()
-            .split("T")[0]
-            .split("-");
-
-          const formattedDate = `${day}-${month}-${year}`;
-          return (
-            <tr>
-              <td className=" px-4 py-2 text-gray-700">{title}</td>
-              <td className=" px-4 py-2 text-gray-700">{chapter}</td>
-              <td className=" px-4 py-2 text-gray-700">{pauth}</td>
-              <td className=" px-4 py-2 text-gray-700">{sauth}</td>
-              <td className=" px-4 py-2 text-gray-700">{edition}</td>
-              <td className=" px-4 py-2 text-gray-700">{publisher}</td>
-              <td className=" px-4 py-2 text-gray-700">{place}</td>
-              <td className=" px-4 py-2 text-gray-700">{date.getFullYear()}</td>
-              <td className=" px-4 py-2 text-gray-700 ">{isbnno}</td>
-            </tr>
-          );
-        }
-      );
-      return booksTable;
     }
     function handleHIndex(hIndex) {
       const hIndexTable = hIndex.map(
@@ -164,18 +161,18 @@ export default function FacultyAchievement() {
       return hIndexTable;
     }
     const callData = async () => {
-      const res = await getData();
+      const res = await getStudentData();
       console.log(res);
       const awardsTable = handleAwards(res.awards);
-      const booksTable = handleBooks(res.books);
-      const hIndexTable = handleHIndex(res.hIndex);
-      console.log(booksTable);
+      // const booksTable = handleBooks(res.books);
+      // const hIndexTable = handleHIndex(res.hIndex);
+      // console.log(booksTable);
       setData((prev) => {
         return {
           ...prev,
           awards: awardsTable,
-          books: booksTable,
-          hIndex: hIndexTable,
+          // books: booksTable,
+          // hIndex: hIndexTable,
         };
       });
     };
@@ -210,6 +207,9 @@ export default function FacultyAchievement() {
                   </th>
                   <th className="whitespace-nowrap px-4 py-2 font-bold text-gray-900">
                     PRN
+                  </th>
+                  <th className="whitespace-nowrap px-4 py-2 font-bold text-gray-900">
+                    Name
                   </th>
                   <th className="whitespace-nowrap px-4 py-2 font-bold text-gray-900">
                     Event Name
