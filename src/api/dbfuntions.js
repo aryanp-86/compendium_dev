@@ -77,10 +77,26 @@ async function initiateDB() {
   );
   `;
 
-  runQuery(facultyWorkshops);
+  /**	Organizer of Event	Position won  */
+  const studentAwards = `
+  CREATE TABLE IF NOT EXISTS studentawards(
+    srno SERIAL,
+    class TEXT,
+    div VARCHAR(5),
+    PRN INT,
+    name TEXT,
+    eventname TEXT,
+    members TEXT,
+    date DATE,
+    organizer TEXT,
+    prize TEXT
+  )
+  `;
+
+  runQuery(studentAwards);
 }
 
-async function getData() {
+async function getFacultyData() {
   const query = `
   SELECT * from facultyawards ORDER BY srno;
   SELECT * from facultybooks ORDER BY srno;
@@ -95,5 +111,14 @@ async function getData() {
     workshop: res[3].rows,
   };
 }
+async function getStudentData() {
+  const query = `
+  SELECT * from studentawards ORDER BY srno;
+  `;
+  const res = await runQuery(query);
+  return {
+    awards: res.rows,
+  };
+}
 
-export { initiateDB, getData };
+export { initiateDB, getFacultyData, getStudentData };

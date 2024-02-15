@@ -1,8 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { getFacultyData } from "@/api/dbfuntions";
+import { getStudentData } from "@/api/dbfuntions";
 import FacultyHero from "../Components/FacultyHero";
-import Footer from "../Components/Footer";
 
 export default function FacultyAchievement() {
   const [data, setData] = useState({
@@ -13,111 +12,108 @@ export default function FacultyAchievement() {
   });
 
   useEffect(() => {
+    /**{
+    "class": "TY",
+    "div": "C",
+    "prn": 12111395,
+    "name": "Niranjan Langade",
+    "eventname": "Nexus 2.0",
+    "members": "Niranjan Langade (Team Leader)",
+    "date": "2023-07-28T18:30:00.000Z",
+    "organizer": "BIT,Sindri",
+    "prize": "Runner Up"
+} */
+    // function handleAwards(awards) {
+    //   const fwiseawards = {};
+    //   const awardsTable = [];
+
+    //   for (const faculty in fwiseawards) {
+    //     console.log(faculty);
+
+    //     for (let i = 0; i < fwiseawards[faculty].length; i++) {
+    //       const { name, awardname, awardingbody, date, type, place } =
+    //         fwiseawards[faculty][i];
+    //       const [year, month, day] = date
+    //         .toISOString()
+    //         .split("T")[0]
+    //         .split("-");
+
+    //       const formattedDate = `${day}-${month}-${year}`;
+    //       if (i === 0) {
+    //         awardsTable.push(
+    //           <tr>
+    //             <td
+    //               rowSpan={fwiseawards[faculty].length}
+    //               className="whitespace px-4 py-2 font-medium text-gray-900 "
+    //             >
+    //               {name}
+    //             </td>
+    //             <td className=" px-4 py-2 text-gray-700 max-w-40">
+    //               {awardname}
+    //             </td>
+    //             <td className=" px-4 py-2 text-gray-700">{awardingbody}</td>
+    //             <td className="whitespace-nowrap px-4 py-2 text-gray-700">
+    //               {formattedDate}
+    //             </td>
+    //             <td className="whitespace-nowrap px-4 py-2 text-gray-700">
+    //               {type}
+    //             </td>
+    //             <td className="whitespace-nowrap px-4 py-2 text-gray-700">
+    //               {place}
+    //             </td>
+    //           </tr>
+    //         );
+    //       } else {
+    //         awardsTable.push(
+    //           <tr>
+    //             {/* <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900"></td> */}
+    //             <td className=" px-4 py-2 text-gray-700 max-w-40">
+    //               {awardname}
+    //             </td>
+    //             <td className="whitespace-nowrap px-4 py-2 text-gray-700 max-w-xs">
+    //               {awardingbody}
+    //             </td>
+    //             <td className="whitespace-nowrap px-4 py-2 text-gray-700">
+    //               {formattedDate}
+    //             </td>
+    //             <td className="whitespace-nowrap px-4 py-2 text-gray-700">
+    //               {type}
+    //             </td>
+    //             <td className="whitespace-nowrap px-4 py-2 text-gray-700">
+    //               {place}
+    //             </td>
+    //           </tr>
+    //         );
+    //       }
+    //     }
+    //   }
+    //   return awardsTable;
+    // }
     function handleAwards(awards) {
-      const fwiseawards = {};
-      const awardsTable = [];
-      awards.forEach((award) => {
-        const { name } = award;
-        if (name in fwiseawards) fwiseawards[name].push(award);
-        else fwiseawards[name] = [award];
+      const awardsTable = awards.map((award) => {
+        const { div, prn, name, eventname, members, date, organizer, prize } =
+          award;
+
+        const [year, month, day] = date.toISOString().split("T")[0].split("-");
+
+        const formattedDate = `${day}-${month}-${year}`;
+        return (
+          <tr>
+            <td className=" px-4 py-2 text-gray-700 ">{award.class}</td>
+            <td className=" px-4 py-2 text-gray-700">{div}</td>
+            <td className=" px-4 py-2 text-gray-700">{prn}</td>
+            <td className=" px-4 py-2 text-gray-700">{name}</td>
+            <td className=" px-4 py-2 text-gray-700">{eventname}</td>
+            <td className=" px-4 py-2 text-gray-700">
+              {members.replace(/\\n/g, ", ")}
+            </td>
+            <td className=" px-4 py-2 text-gray-700">{formattedDate}</td>
+            <td className=" px-4 py-2 text-gray-700">{organizer}</td>
+            <td className=" px-4 py-2 text-gray-700">{prize}</td>
+          </tr>
+        );
       });
-      for (const faculty in fwiseawards) {
-        console.log(faculty);
-
-        for (let i = 0; i < fwiseawards[faculty].length; i++) {
-          const { name, awardname, awardingbody, date, type, place } =
-            fwiseawards[faculty][i];
-          const [year, month, day] = date
-            .toISOString()
-            .split("T")[0]
-            .split("-");
-
-          const formattedDate = `${day}-${month}-${year}`;
-          if (i === 0) {
-            awardsTable.push(
-              <tr>
-                <td
-                  rowSpan={fwiseawards[faculty].length}
-                  className="whitespace px-4 py-2 font-medium text-gray-900 "
-                >
-                  {name}
-                </td>
-                <td className=" px-4 py-2 text-gray-700 max-w-40">
-                  {awardname}
-                </td>
-                <td className=" px-4 py-2 text-gray-700">{awardingbody}</td>
-                <td className="whitespace-nowrap px-4 py-2 text-gray-700">
-                  {formattedDate}
-                </td>
-                <td className="whitespace-nowrap px-4 py-2 text-gray-700">
-                  {type}
-                </td>
-                <td className="whitespace-nowrap px-4 py-2 text-gray-700">
-                  {place}
-                </td>
-              </tr>
-            );
-          } else {
-            awardsTable.push(
-              <tr>
-                {/* <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900"></td> */}
-                <td className=" px-4 py-2 text-gray-700 max-w-40">
-                  {awardname}
-                </td>
-                <td className="whitespace-nowrap px-4 py-2 text-gray-700 max-w-xs">
-                  {awardingbody}
-                </td>
-                <td className="whitespace-nowrap px-4 py-2 text-gray-700">
-                  {formattedDate}
-                </td>
-                <td className="whitespace-nowrap px-4 py-2 text-gray-700">
-                  {type}
-                </td>
-                <td className="whitespace-nowrap px-4 py-2 text-gray-700">
-                  {place}
-                </td>
-              </tr>
-            );
-          }
-        }
-      }
       return awardsTable;
-    }
-    function handleBooks(books) {
-      const booksTable = books.map(
-        ({
-          title,
-          chapter,
-          pauth,
-          sauth,
-          edition,
-          publisher,
-          place,
-          date,
-          isbnno,
-        }) => {
-          const [year, month, day] = date
-            .toISOString()
-            .split("T")[0]
-            .split("-");
-
-          const formattedDate = `${day}-${month}-${year}`;
-          return (
-            <tr>
-              <td className=" px-4 py-2 text-gray-700">{title}</td>
-              <td className=" px-4 py-2 text-gray-700">{chapter}</td>
-              <td className=" px-4 py-2 text-gray-700">{pauth}</td>
-              <td className=" px-4 py-2 text-gray-700">{sauth}</td>
-              <td className=" px-4 py-2 text-gray-700">{edition}</td>
-              <td className=" px-4 py-2 text-gray-700">{publisher}</td>
-              <td className=" px-4 py-2 text-gray-700">{place}</td>
-              <td className=" px-4 py-2 text-gray-700">{date.getFullYear()}</td>
-              <td className=" px-4 py-2 text-gray-700 ">{isbnno}</td>
-            </tr>
-          );
-        }
-      );
-      return booksTable;
     }
     function handleHIndex(hIndex) {
       const hIndexTable = hIndex.map(
@@ -164,50 +160,19 @@ export default function FacultyAchievement() {
       console.log(hIndexTable);
       return hIndexTable;
     }
-    function handleWorkshop(workshop) {
-      const workshopTable = workshop.map(
-        ({
-          name, type, sponser, facultyname, date, place, subject, notracks, noparticipants
-        }) => {
-          return (
-            <>
-              <tr>
-                <td className=" px-4 py-2 text-gray-700" rowSpan={1} colSpan={1}>
-                  {name}
-                </td>
-                <td className=" px-4 py-2 text-gray-700">{type}</td>
-                <td className=" px-4 py-2 text-gray-700">{sponser}</td>
-                <td className=" px-4 py-2 text-gray-700">{facultyname}</td>
-                <td className=" px-4 py-2 text-gray-700">
-                  {date?.getFullYear()}
-                </td>
-                <td className=" px-4 py-2 text-gray-700">{place} </td>
-                <td className=" px-4 py-2 text-gray-700">{subject} </td>
-                <td className=" px-4 py-2 text-gray-700">{notracks} </td>
-                <td className=" px-4 py-2 text-gray-700">{noparticipants} </td>
-              </tr>
-            </>
-          );
-        }
-      );
-      console.log(workshopTable);
-      return workshopTable;
-    }
     const callData = async () => {
-      const res = await getFacultyData();
+      const res = await getStudentData();
       console.log(res);
       const awardsTable = handleAwards(res.awards);
-      const booksTable = handleBooks(res.books);
-      const hIndexTable = handleHIndex(res.hIndex);
-      const workshopTable = handleWorkshop(res.workshop);
-      console.log(booksTable);
+      // const booksTable = handleBooks(res.books);
+      // const hIndexTable = handleHIndex(res.hIndex);
+      // console.log(booksTable);
       setData((prev) => {
         return {
           ...prev,
           awards: awardsTable,
-          books: booksTable,
-          hIndex: hIndexTable,
-          workshop: workshopTable,
+          // books: booksTable,
+          // hIndex: hIndexTable,
         };
       });
     };
@@ -232,24 +197,34 @@ export default function FacultyAchievement() {
             <table className="min-w-full divide-x-2  text-lg border-r-2">
               <thead className="text-left border-4 border-slate-600">
                 <tr className="underline underline-offset-4">
+                  {/* class	div	prn	name	eventname	members	date	organizer	prize */}
                   <th className="whitespace-nowrap px-4 py-2 font-bold text-gray-900">
-                    Name
+                    Class
                   </th>
 
                   <th className="whitespace-nowrap px-4 py-2 font-bold text-gray-900">
-                    Award
+                    Div
                   </th>
                   <th className="whitespace-nowrap px-4 py-2 font-bold text-gray-900">
-                    Awarding Body
+                    PRN
+                  </th>
+                  <th className="whitespace-nowrap px-4 py-2 font-bold text-gray-900">
+                    Name
+                  </th>
+                  <th className="whitespace-nowrap px-4 py-2 font-bold text-gray-900">
+                    Event Name
+                  </th>
+                  <th className="whitespace-nowrap px-4 py-2 font-bold text-gray-900">
+                    Members
                   </th>
                   <th className="whitespace-nowrap px-4 py-2 font-bold text-gray-900">
                     Date
                   </th>
                   <th className="whitespace-nowrap px-4 py-2 font-bold text-gray-900">
-                    Type
+                    Organizer
                   </th>
                   <th className="whitespace-nowrap px-4 py-2 font-bold text-gray-900">
-                    Place
+                    Prize
                   </th>
                 </tr>
               </thead>
@@ -468,7 +443,7 @@ export default function FacultyAchievement() {
         <div className="mx-auto  px-4 py-2 lg:flex lg:items-center lg:flex-col">
           <div className="mx-auto text-center overflow-y-clip">
             <h1 className="bebas-font tracking-widest text-5xl font-extrabold lg:text-8xl">
-              H-Index
+              Books Chapters Published
             </h1>
           </div>
         </div>
@@ -476,36 +451,35 @@ export default function FacultyAchievement() {
       <div className="flex-col flex p-12">
         <div className="rounded-lg border border-gray-200">
           <div className="overflow-x-clip rounded-md mt-8">
-            <table className="divide-x-2 table-auto border-spacing-4 min-w-full text-lg border-r-2">
-              <thead className="text-center border-4 border-slate-600">
+            <table className="min-w-full divide-x-2  text-lg border-r-2">
+              <thead className="text-left border-4 border-slate-600">
                 <tr>
-
-                  <th className="whitespace-pre-wrap px-4 py-2 font-medium text-gray-900">
+                  <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
                     Name
                   </th>
                   <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900"></th>
                   <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                    Google
+                    google
                   </th>
                   <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                    Scopus
+                    scopus
                   </th>
                   <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                    Date
+                    date
                   </th>
                 </tr>
               </thead>
 
-              <tbody className="divide-y divide-gray-800 text-center">{data.hIndex}</tbody>
+              <tbody className="divide-y divide-gray-200">{data.hIndex}</tbody>
             </table>
           </div>
 
-          <div className="rounded-b-lg border-t border-gray-200 px-4 py-2 flex items-center justify-center">
-            <ol className="flex justify-end gap-5 text-lg text-center font-bold">
+          <div className="rounded-b-lg border-t border-gray-200 px-4 py-2">
+            <ol className="flex justify-end gap-1 text-xs font-medium">
               <li>
                 <a
                   href="#"
-                  className="inline-flex size-12 items-center justify-center rounded border border-gray-100 bg-white text-gray-900 "
+                  className="inline-flex size-8 items-center justify-center rounded border border-gray-100 bg-white text-gray-900 "
                 >
                   <span className="sr-only">Prev Page</span>
                   <svg
@@ -526,20 +500,20 @@ export default function FacultyAchievement() {
               <li>
                 <a
                   href="#"
-                  className="block size-12 rounded border border-gray-100 bg-white text-center leading-10  text-gray-900"
+                  className="block size-8 rounded border border-gray-100 bg-white text-center leading-8 text-gray-900"
                 >
                   1
                 </a>
               </li>
 
-              <li className="block size-12 rounded border-blue-600 bg-blue-600 text-center leading-10 text-white">
+              <li className="block size-8 rounded border-blue-600 bg-blue-600 text-center leading-8 text-white">
                 2
               </li>
 
               <li>
                 <a
                   href="#"
-                  className="block size-12 rounded border border-gray-100 bg-white text-center leading-10 text-gray-900"
+                  className="block size-8 rounded border border-gray-100 bg-white text-center leading-8 text-gray-900"
                 >
                   3
                 </a>
@@ -548,7 +522,7 @@ export default function FacultyAchievement() {
               <li>
                 <a
                   href="#"
-                  className="block size-12 rounded border border-gray-100 bg-white text-center leading-10 text-gray-900"
+                  className="block size-8 rounded border border-gray-100 bg-white text-center leading-8 text-gray-900"
                 >
                   4
                 </a>
@@ -557,7 +531,7 @@ export default function FacultyAchievement() {
               <li>
                 <a
                   href="#"
-                  className="inline-flex size-12 items-center justify-center rounded border border-gray-100 bg-white text-gray-900 "
+                  className="inline-flex size-8 items-center justify-center rounded border border-gray-100 bg-white text-gray-900 "
                 >
                   <span className="sr-only">Next Page</span>
                   <svg
@@ -578,54 +552,32 @@ export default function FacultyAchievement() {
           </div>
         </div>
       </div>
-      <section className="overflow-hidden mt-16">
-        <div className="mx-auto  px-4 py-2 lg:flex lg:items-center lg:flex-col">
-          <div className="mx-auto text-center overflow-y-clip">
-            <h1 className="bebas-font tracking-widest text-5xl font-extrabold lg:text-8xl">
-              Workshops Organised
-            </h1>
-          </div>
-        </div>
-      </section>
-      <div className="flex-col flex p-12">
+      <div className="p-5">
         <div className="rounded-lg border border-gray-200">
-          <div className="overflow-x-clip rounded-md mt-8">
-            <table className="divide-x-2 table-auto border-spacing-4 min-w-full text-lg border-r-2">
-              <thead className="text-center border-4 border-slate-600">
+          <div className="overflow-x-clip rounded-t-md">
+            <table className="min-w-full divide-y-2 divide-gray-200 bg-white text-sm">
+              <thead className="text-left">
                 <tr>
                   <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
                     Name
                   </th>
+                  <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900"></th>
                   <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                    Type
+                    google
                   </th>
                   <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                    Sponsors
+                    scopus
                   </th>
                   <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                    Faculty Name
-                  </th>
-                  <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                    Dates
-                  </th>
-                  <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                    Place
-                  </th>
-                  <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                    Subject Area
-                  </th>
-                  <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                    No. of Tracks
-                  </th>
-                  <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                    No. of Participants
+                    date
                   </th>
                 </tr>
               </thead>
 
-              <tbody className="divide-y divide-gray-800 text-center">{data.workshop}</tbody>
+              <tbody className="divide-y divide-gray-200">{data.hIndex}</tbody>
             </table>
           </div>
+
           <div className="rounded-b-lg border-t border-gray-200 px-4 py-2 flex items-center justify-center">
             <ol className="flex justify-end gap-5 text-lg text-center font-bold">
               <li>
@@ -702,9 +654,8 @@ export default function FacultyAchievement() {
               </li>
             </ol>
           </div>
-
         </div>
       </div>
-      <Footer /></div>
+    </div>
   );
 }
