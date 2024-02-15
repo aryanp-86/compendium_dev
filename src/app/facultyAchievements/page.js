@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { getData } from "@/api/dbfuntions";
 import FacultyHero from "../Components/FacultyHero";
+import Footer from "../Components/Footer";
 
 export default function FacultyAchievement() {
   const [data, setData] = useState({
@@ -163,12 +164,42 @@ export default function FacultyAchievement() {
       console.log(hIndexTable);
       return hIndexTable;
     }
+    function handleWorkshop(workshop) {
+      const workshopTable = workshop.map(
+        ({
+          name, type, sponser, facultyname, date, place, subject, notracks, noparticipants
+        }) => {
+          return (
+            <>
+              <tr>
+                <td className=" px-4 py-2 text-gray-700" rowSpan={1} colSpan={1}>
+                  {name}
+                </td>
+                <td className=" px-4 py-2 text-gray-700">{type}</td>
+                <td className=" px-4 py-2 text-gray-700">{sponser}</td>
+                <td className=" px-4 py-2 text-gray-700">{facultyname}</td>
+                <td className=" px-4 py-2 text-gray-700">
+                  {date?.getFullYear()}
+                </td>
+                <td className=" px-4 py-2 text-gray-700">{place} </td>
+                <td className=" px-4 py-2 text-gray-700">{subject} </td>
+                <td className=" px-4 py-2 text-gray-700">{notracks} </td>
+                <td className=" px-4 py-2 text-gray-700">{noparticipants} </td>
+              </tr>
+            </>
+          );
+        }
+      );
+      console.log(workshopTable);
+      return workshopTable;
+    }
     const callData = async () => {
       const res = await getData();
       console.log(res);
       const awardsTable = handleAwards(res.awards);
       const booksTable = handleBooks(res.books);
       const hIndexTable = handleHIndex(res.hIndex);
+      const workshopTable = handleWorkshop(res.workshop);
       console.log(booksTable);
       setData((prev) => {
         return {
@@ -176,6 +207,7 @@ export default function FacultyAchievement() {
           awards: awardsTable,
           books: booksTable,
           hIndex: hIndexTable,
+          workshop: workshopTable,
         };
       });
     };
@@ -436,7 +468,7 @@ export default function FacultyAchievement() {
         <div className="mx-auto  px-4 py-2 lg:flex lg:items-center lg:flex-col">
           <div className="mx-auto text-center overflow-y-clip">
             <h1 className="bebas-font tracking-widest text-5xl font-extrabold lg:text-8xl">
-              Books Chapters Published
+              H-Index
             </h1>
           </div>
         </div>
@@ -444,130 +476,27 @@ export default function FacultyAchievement() {
       <div className="flex-col flex p-12">
         <div className="rounded-lg border border-gray-200">
           <div className="overflow-x-clip rounded-md mt-8">
-            <table className="min-w-full divide-x-2  text-lg border-r-2">
-              <thead className="text-left border-4 border-slate-600">
+            <table className="divide-x-2 table-auto border-spacing-4 min-w-full text-lg border-r-2">
+              <thead className="text-center border-4 border-slate-600">
                 <tr>
-                  <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+
+                  <th className="whitespace-pre-wrap px-4 py-2 font-medium text-gray-900">
                     Name
                   </th>
                   <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900"></th>
                   <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                    google
+                    Google
                   </th>
                   <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                    scopus
+                    Scopus
                   </th>
                   <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                    date
+                    Date
                   </th>
                 </tr>
               </thead>
 
-              <tbody className="divide-y divide-gray-200">{data.hIndex}</tbody>
-            </table>
-          </div>
-
-          <div className="rounded-b-lg border-t border-gray-200 px-4 py-2">
-            <ol className="flex justify-end gap-1 text-xs font-medium">
-              <li>
-                <a
-                  href="#"
-                  className="inline-flex size-8 items-center justify-center rounded border border-gray-100 bg-white text-gray-900 "
-                >
-                  <span className="sr-only">Prev Page</span>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-3 w-3"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                </a>
-              </li>
-
-              <li>
-                <a
-                  href="#"
-                  className="block size-8 rounded border border-gray-100 bg-white text-center leading-8 text-gray-900"
-                >
-                  1
-                </a>
-              </li>
-
-              <li className="block size-8 rounded border-blue-600 bg-blue-600 text-center leading-8 text-white">
-                2
-              </li>
-
-              <li>
-                <a
-                  href="#"
-                  className="block size-8 rounded border border-gray-100 bg-white text-center leading-8 text-gray-900"
-                >
-                  3
-                </a>
-              </li>
-
-              <li>
-                <a
-                  href="#"
-                  className="block size-8 rounded border border-gray-100 bg-white text-center leading-8 text-gray-900"
-                >
-                  4
-                </a>
-              </li>
-
-              <li>
-                <a
-                  href="#"
-                  className="inline-flex size-8 items-center justify-center rounded border border-gray-100 bg-white text-gray-900 "
-                >
-                  <span className="sr-only">Next Page</span>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-3 w-3"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                </a>
-              </li>
-            </ol>
-          </div>
-        </div>
-      </div>
-      <div className="p-5">
-        <div className="rounded-lg border border-gray-200">
-          <div className="overflow-x-clip rounded-t-md">
-            <table className="min-w-full divide-y-2 divide-gray-200 bg-white text-sm">
-              <thead className="text-left">
-                <tr>
-                  <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                    Name
-                  </th>
-                  <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900"></th>
-                  <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                    google
-                  </th>
-                  <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                    scopus
-                  </th>
-                  <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                    date
-                  </th>
-                </tr>
-              </thead>
-
-              <tbody className="divide-y divide-gray-200">{data.hIndex}</tbody>
+              <tbody className="divide-y divide-gray-800 text-center">{data.hIndex}</tbody>
             </table>
           </div>
 
@@ -649,6 +578,133 @@ export default function FacultyAchievement() {
           </div>
         </div>
       </div>
-    </div>
+      <section className="overflow-hidden mt-16">
+        <div className="mx-auto  px-4 py-2 lg:flex lg:items-center lg:flex-col">
+          <div className="mx-auto text-center overflow-y-clip">
+            <h1 className="bebas-font tracking-widest text-5xl font-extrabold lg:text-8xl">
+              Workshops Organised
+            </h1>
+          </div>
+        </div>
+      </section>
+      <div className="flex-col flex p-12">
+        <div className="rounded-lg border border-gray-200">
+          <div className="overflow-x-clip rounded-md mt-8">
+            <table className="divide-x-2 table-auto border-spacing-4 min-w-full text-lg border-r-2">
+              <thead className="text-center border-4 border-slate-600">
+                <tr>
+                  <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+                    Name
+                  </th>
+                  <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+                    Type
+                  </th>
+                  <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+                    Sponsors
+                  </th>
+                  <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+                    Faculty Name
+                  </th>
+                  <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+                    Dates
+                  </th>
+                  <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+                    Place
+                  </th>
+                  <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+                    Subject Area
+                  </th>
+                  <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+                    No. of Tracks
+                  </th>
+                  <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+                    No. of Participants
+                  </th>
+                </tr>
+              </thead>
+
+              <tbody className="divide-y divide-gray-800 text-center">{data.workshop}</tbody>
+            </table>
+          </div>
+          <div className="rounded-b-lg border-t border-gray-200 px-4 py-2 flex items-center justify-center">
+            <ol className="flex justify-end gap-5 text-lg text-center font-bold">
+              <li>
+                <a
+                  href="#"
+                  className="inline-flex size-12 items-center justify-center rounded border border-gray-100 bg-white text-gray-900 "
+                >
+                  <span className="sr-only">Prev Page</span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-3 w-3"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href="#"
+                  className="block size-12 rounded border border-gray-100 bg-white text-center leading-10  text-gray-900"
+                >
+                  1
+                </a>
+              </li>
+
+              <li className="block size-12 rounded border-blue-600 bg-blue-600 text-center leading-10 text-white">
+                2
+              </li>
+
+              <li>
+                <a
+                  href="#"
+                  className="block size-12 rounded border border-gray-100 bg-white text-center leading-10 text-gray-900"
+                >
+                  3
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href="#"
+                  className="block size-12 rounded border border-gray-100 bg-white text-center leading-10 text-gray-900"
+                >
+                  4
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href="#"
+                  className="inline-flex size-12 items-center justify-center rounded border border-gray-100 bg-white text-gray-900 "
+                >
+                  <span className="sr-only">Next Page</span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-3 w-3"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                </a>
+              </li>
+            </ol>
+          </div>
+
+        </div>
+      </div>
+      <Footer /></div>
   );
 }
