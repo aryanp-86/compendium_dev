@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { getData } from "@/api/dbfuntions";
+import FacultyHero from "../Components/FacultyHero";
 
 export default function FacultyAchievement() {
   const [data, setData] = useState({
@@ -182,54 +183,55 @@ export default function FacultyAchievement() {
     return () => callData();
   }, []);
   return (
-    /**{
-    "srno": 1,
-    "name": "Dr G D Bhutkar",
-    "googlehindex": 15,
-    "googlecitations": 577,
-    "googlepersonalif": 5,
-    "scopushindex": 5,
-    "scopuscitations": 9,
-    "date": "2023-08-28T18:30:00.000Z"
-} */
-    <div>
-      <div className="p-5">
-        <div className="rounded-lg border border-gray-200">
-          <div className="overflow-x-auto rounded-t-md">
-            <table className="min-w-full divide-y-2 divide-gray-200 bg-white text-sm">
-              <thead className="text-left">
-                <tr>
-                  <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+    <div className="faculty select-none w-full">
+      <FacultyHero />
+      <section className="overflow-hidden mt-16">
+        <div className="mx-auto  px-4 py-2 lg:flex lg:items-center lg:flex-col">
+          <div className="mx-auto text-center overflow-y-clip">
+            <h1 className="bebas-font tracking-widest text-5xl font-extrabold lg:text-8xl">
+              Awards
+            </h1>
+          </div>
+        </div>
+      </section>
+      <div className="flex flex-col p-12 ">
+        <div className="rounded-lg">
+          <div className="overflow-x-clip rounded-md mt-8">
+            <table className="min-w-full divide-x-2  text-lg border-r-2">
+              <thead className="text-left border-4 border-slate-600">
+                <tr className="underline underline-offset-4">
+                  <th className="whitespace-nowrap px-4 py-2 font-bold text-gray-900">
                     Name
                   </th>
-                  <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+
+                  <th className="whitespace-nowrap px-4 py-2 font-bold text-gray-900">
                     Award
                   </th>
-                  <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+                  <th className="whitespace-nowrap px-4 py-2 font-bold text-gray-900">
                     Awarding Body
                   </th>
-                  <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+                  <th className="whitespace-nowrap px-4 py-2 font-bold text-gray-900">
                     Date
                   </th>
-                  <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+                  <th className="whitespace-nowrap px-4 py-2 font-bold text-gray-900">
                     Type
                   </th>
-                  <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+                  <th className="whitespace-nowrap px-4 py-2 font-bold text-gray-900">
                     Place
                   </th>
                 </tr>
               </thead>
 
-              <tbody className="divide-y divide-gray-200">{data.awards}</tbody>
+              <tbody className="divide-y divide-gray-800">{data.awards}</tbody>
             </table>
           </div>
 
-          <div className="rounded-b-lg border-t border-gray-200 px-4 py-2">
-            <ol className="flex justify-end gap-1 text-xs font-medium">
+          <div className="rounded-b-lg border-t border-gray-200 px-4 py-2 flex items-center justify-center">
+            <ol className="flex justify-end gap-5 text-lg text-center font-bold">
               <li>
                 <a
                   href="#"
-                  className="inline-flex size-8 items-center justify-center rounded border border-gray-100 bg-white text-gray-900 "
+                  className="inline-flex size-12 items-center justify-center rounded border border-gray-100 bg-white text-gray-900 "
                 >
                   <span className="sr-only">Prev Page</span>
                   <svg
@@ -250,20 +252,20 @@ export default function FacultyAchievement() {
               <li>
                 <a
                   href="#"
-                  className="block size-8 rounded border border-gray-100 bg-white text-center leading-8 text-gray-900"
+                  className="block size-12 rounded border border-gray-100 bg-white text-center leading-10  text-gray-900"
                 >
                   1
                 </a>
               </li>
 
-              <li className="block size-8 rounded border-blue-600 bg-blue-600 text-center leading-8 text-white">
+              <li className="block size-12 rounded border-blue-600 bg-blue-600 text-center leading-10 text-white">
                 2
               </li>
 
               <li>
                 <a
                   href="#"
-                  className="block size-8 rounded border border-gray-100 bg-white text-center leading-8 text-gray-900"
+                  className="block size-12 rounded border border-gray-100 bg-white text-center leading-10 text-gray-900"
                 >
                   3
                 </a>
@@ -272,7 +274,7 @@ export default function FacultyAchievement() {
               <li>
                 <a
                   href="#"
-                  className="block size-8 rounded border border-gray-100 bg-white text-center leading-8 text-gray-900"
+                  className="block size-12 rounded border border-gray-100 bg-white text-center leading-10 text-gray-900"
                 >
                   4
                 </a>
@@ -281,7 +283,7 @@ export default function FacultyAchievement() {
               <li>
                 <a
                   href="#"
-                  className="inline-flex size-8 items-center justify-center rounded border border-gray-100 bg-white text-gray-900 "
+                  className="inline-flex size-12 items-center justify-center rounded border border-gray-100 bg-white text-gray-900 "
                 >
                   <span className="sr-only">Next Page</span>
                   <svg
@@ -302,11 +304,20 @@ export default function FacultyAchievement() {
           </div>
         </div>
       </div>
-      <div className="p-5">
+      <section className="overflow-hidden mt-16">
+        <div className="mx-auto  px-4 py-2 lg:flex lg:items-center lg:flex-col">
+          <div className="mx-auto text-center overflow-y-clip">
+            <h1 className="bebas-font tracking-widest text-5xl font-extrabold lg:text-8xl">
+              Books Chapters Published
+            </h1>
+          </div>
+        </div>
+      </section>
+      <div className="flex-col flex p-12">
         <div className="rounded-lg border border-gray-200">
-          <div className="overflow-x-clip rounded-t-md">
-            <table className="min-w-full divide-y-2 divide-gray-200 bg-white text-sm">
-              <thead className="text-left">
+          <div className="overflow-x-clip rounded-md mt-8">
+            <table className="min-w-full divide-x-2  text-lg border-r-2">
+              <thead className="text-left border-4 border-slate-600">
                 <tr>
                   <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
                     Title
@@ -327,10 +338,10 @@ export default function FacultyAchievement() {
                   <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
                     Publisher
                   </th>
-                  <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+                  <th className="whitespace-nowrap px-4 py-2 font-bold text-gray-900">
                     Place
                   </th>
-                  <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+                  <th className="whitespace-nowrap px-4 py-2 font-bold text-gray-900">
                     Date
                   </th>
                   <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
@@ -339,7 +350,120 @@ export default function FacultyAchievement() {
                 </tr>
               </thead>
 
-              <tbody className="divide-y divide-gray-200">{data.books}</tbody>
+              <tbody className="divide-y divide-gray-800">{data.books}</tbody>
+            </table>
+          </div>
+
+          <div className="rounded-b-lg border-t border-gray-200 px-4 py-2 flex items-center justify-center">
+            <ol className="flex justify-end gap-5 text-lg text-center font-bold">
+              <li>
+                <a
+                  href="#"
+                  className="inline-flex size-12 items-center justify-center rounded border border-gray-100 bg-white text-gray-900 "
+                >
+                  <span className="sr-only">Prev Page</span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-3 w-3"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href="#"
+                  className="block size-12 rounded border border-gray-100 bg-white text-center leading-10  text-gray-900"
+                >
+                  1
+                </a>
+              </li>
+
+              <li className="block size-12 rounded border-blue-600 bg-blue-600 text-center leading-10 text-white">
+                2
+              </li>
+
+              <li>
+                <a
+                  href="#"
+                  className="block size-12 rounded border border-gray-100 bg-white text-center leading-10 text-gray-900"
+                >
+                  3
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href="#"
+                  className="block size-12 rounded border border-gray-100 bg-white text-center leading-10 text-gray-900"
+                >
+                  4
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href="#"
+                  className="inline-flex size-12 items-center justify-center rounded border border-gray-100 bg-white text-gray-900 "
+                >
+                  <span className="sr-only">Next Page</span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-3 w-3"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                </a>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+      <section className="overflow-hidden mt-16">
+        <div className="mx-auto  px-4 py-2 lg:flex lg:items-center lg:flex-col">
+          <div className="mx-auto text-center overflow-y-clip">
+            <h1 className="bebas-font tracking-widest text-5xl font-extrabold lg:text-8xl">
+              Books Chapters Published
+            </h1>
+          </div>
+        </div>
+      </section>
+      <div className="flex-col flex p-12">
+        <div className="rounded-lg border border-gray-200">
+          <div className="overflow-x-clip rounded-md mt-8">
+            <table className="min-w-full divide-x-2  text-lg border-r-2">
+              <thead className="text-left border-4 border-slate-600">
+                <tr>
+                  <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+                    Name
+                  </th>
+                  <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900"></th>
+                  <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+                    google
+                  </th>
+                  <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+                    scopus
+                  </th>
+                  <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+                    date
+                  </th>
+                </tr>
+              </thead>
+
+              <tbody className="divide-y divide-gray-200">{data.hIndex}</tbody>
             </table>
           </div>
 
@@ -447,12 +571,12 @@ export default function FacultyAchievement() {
             </table>
           </div>
 
-          <div className="rounded-b-lg border-t border-gray-200 px-4 py-2">
-            <ol className="flex justify-end gap-1 text-xs font-medium">
+          <div className="rounded-b-lg border-t border-gray-200 px-4 py-2 flex items-center justify-center">
+            <ol className="flex justify-end gap-5 text-lg text-center font-bold">
               <li>
                 <a
                   href="#"
-                  className="inline-flex size-8 items-center justify-center rounded border border-gray-100 bg-white text-gray-900 "
+                  className="inline-flex size-12 items-center justify-center rounded border border-gray-100 bg-white text-gray-900 "
                 >
                   <span className="sr-only">Prev Page</span>
                   <svg
@@ -473,20 +597,20 @@ export default function FacultyAchievement() {
               <li>
                 <a
                   href="#"
-                  className="block size-8 rounded border border-gray-100 bg-white text-center leading-8 text-gray-900"
+                  className="block size-12 rounded border border-gray-100 bg-white text-center leading-10  text-gray-900"
                 >
                   1
                 </a>
               </li>
 
-              <li className="block size-8 rounded border-blue-600 bg-blue-600 text-center leading-8 text-white">
+              <li className="block size-12 rounded border-blue-600 bg-blue-600 text-center leading-10 text-white">
                 2
               </li>
 
               <li>
                 <a
                   href="#"
-                  className="block size-8 rounded border border-gray-100 bg-white text-center leading-8 text-gray-900"
+                  className="block size-12 rounded border border-gray-100 bg-white text-center leading-10 text-gray-900"
                 >
                   3
                 </a>
@@ -495,7 +619,7 @@ export default function FacultyAchievement() {
               <li>
                 <a
                   href="#"
-                  className="block size-8 rounded border border-gray-100 bg-white text-center leading-8 text-gray-900"
+                  className="block size-12 rounded border border-gray-100 bg-white text-center leading-10 text-gray-900"
                 >
                   4
                 </a>
@@ -504,7 +628,7 @@ export default function FacultyAchievement() {
               <li>
                 <a
                   href="#"
-                  className="inline-flex size-8 items-center justify-center rounded border border-gray-100 bg-white text-gray-900 "
+                  className="inline-flex size-12 items-center justify-center rounded border border-gray-100 bg-white text-gray-900 "
                 >
                   <span className="sr-only">Next Page</span>
                   <svg

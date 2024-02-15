@@ -16,7 +16,7 @@
 .bebas-font {
   font-family: "Bebas Neue", sans-serif;
 }
-.border {
+.border1 {
   box-shadow: rgba(3, 102, 214, 0.6) 10px 10px 10px 3px;
 }
 .sticky {
@@ -25,4 +25,11 @@
   color: white;
   z-index: 10;
   width: 100%;
+}
+
+.backUp {
+  background: rgba(255, 255, 255, 0.5);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
 }
