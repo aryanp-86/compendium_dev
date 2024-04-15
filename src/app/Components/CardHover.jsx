@@ -36,7 +36,7 @@ export function CardHover() {
             >
               <TextRevealCard
                 text="Prof. (Dr.) Sandip R. Shinde"
-                revealText="Professor & Head, Department of Computer Engineering"
+                revealText="Head of Department, Computer Engineering"
               ></TextRevealCard>
             </CardItem>
           </div>

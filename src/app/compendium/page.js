@@ -1,13 +1,13 @@
-"use client";
-import React, { useState, useEffect } from "react";
+"use client"
+import React from 'react'
+import { CompendiumHero } from '../Components/CompendiumHero'
+import { useState, useEffect } from "react";
 import { Dialog } from "@headlessui/react";
 import Image from "next/image";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-import SvgComponent5 from "../Components/SvgComponent5";
 import Link from "next/link";
-import { LampDemo } from "../ui/lamp";
-import { CardHover } from "../Components/CardHover";
-import Footer from "../Components/Footer";
+
+
 const navigation = [
     { name: "Home", href: "/" },
     { name: "From HOD's Desk", href: "/hod" },
@@ -15,9 +15,9 @@ const navigation = [
     { name: "Student Achievements", href: "#" },
     { name: "Compendium", href: "/compendium" },
 ];
-const Hod = () => {
-    const [scroll, setScroll] = useState(false);
+const page = () => {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+    const [scroll, setScroll] = useState(false);
 
     useEffect(() => {
         window.addEventListener("scroll", () => {
@@ -25,10 +25,10 @@ const Hod = () => {
         });
     }, []);
     return (
-        // <img src="https://i.ibb.co/47yyLMS/Untitled.jpg" alt="Untitled" border="0"></img>
-        <div className="hod w-full overflow-y-clip">
+        <div className='compendium w-full'>
             <header
-                className="inset-x-0 h-20 text-white bg-black top-0 z-50 nav-link"
+                className={`inset-x-0 top-0 z-50 nav-link ${scroll ? "sticky" : "bg-black text-white"
+                    }`}
             >
                 <nav
                     className="flex items-center justify-between p-6 lg:px-8"
@@ -120,17 +120,12 @@ const Hod = () => {
                     </Dialog.Panel>
                 </Dialog>
             </header>
-            <div className="grid grid-cols-3 h-screen">
-                <div className="h-3/4 col-span-1 flex items-center justify-center bg-slate-950">
-                    <CardHover />
-                </div>
-                <div className="col-span-2 -z-20">
-                    <LampDemo />
-                </div>
+            <div className="h-screen w-full bg-black bg-grid-white/[0.2]  relative flex items-center justify-center">
+                <div className="absolute pointer-events-none inset-0 flex items-center justify-center bg-black [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
+                <CompendiumHero />
             </div>
-            <Footer />
         </div>
-    );
-};
+    )
+}
 
-export default Hod;
+export default page

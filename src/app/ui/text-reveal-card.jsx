@@ -85,7 +85,7 @@ export const TextRevealCard = ({ text, revealText, children, className }) => {
             style={{
               textShadow: "4px 4px 15px rgba(0,0,0,0.5)",
             }}
-            className="text-base sm:text-[1.5rem] leading-none font-bold text-white bg-clip-text text-transparent bg-gradient-to-b text-center from-white to-neutral-300"
+            className="text-base sm:text-[2rem] leading-none font-bold text-white bg-clip-text text-transparent bg-gradient-to-b text-center from-white to-neutral-300"
           >
             {revealText}
           </p>
