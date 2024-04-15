@@ -1,16 +1,17 @@
 "use client";
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { Dialog } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import YourSvgComponent from "./SvgComponent";
 import SvgComponent2 from "./SvgComponent2";
 
 const navigation = [
-  { name: "Home", href: "#" },
-  { name: "From HOD's Desk", href: "#" },
-  { name: "Faculty Achievements", href: "#" },
-  { name: "Student Achievements", href: "#" },
+  { name: "Home", href: "/" },
+  { name: "From HOD's Desk", href: "/hod" },
+  { name: "Faculty Achievements", href: "/facultyAchievements" },
+  { name: "Student Achievements", href: "/studentAchievements" },
   { name: "Compendium", href: "#" },
 ];
 
@@ -60,13 +61,11 @@ export default function HeroSection() {
           </div>
           <div className="hidden lg:flex lg:gap-x-12">
             {navigation.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                className="text-base font-semibold leading-6 tracking-tight"
-              >
-                {item.name}
-              </a>
+              <Link key={item.name} href={item.href}>
+                <p className="text-base font-semibold leading-6 tracking-tight">
+                  {item.name}
+                </p>
+              </Link>
             ))}
           </div>
           <div className="hidden lg:flex lg:flex-1 lg:justify-end"></div>
@@ -101,13 +100,11 @@ export default function HeroSection() {
               <div className="-my-6 divide-y divide-gray-500/10">
                 <div className="space-y-2 py-6">
                   {navigation.map((item) => (
-                    <a
-                      key={item.name}
-                      href={item.href}
-                      className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                    >
-                      {item.name}
-                    </a>
+                    <Link href={item.href}>
+                      <a className="text-base font-semibold leading-6 tracking-tight">
+                        {item.name}
+                      </a>
+                    </Link>
                   ))}
                 </div>
                 <div className="py-6">

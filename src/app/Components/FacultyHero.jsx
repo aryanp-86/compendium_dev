@@ -6,11 +6,12 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import Lottie from "lottie-react";
 import animation from "../../assets/achieve.json";
 import SvgComponent5 from "./SvgComponent5";
+import Link from "next/link";
 
 const navigation = [
-  { name: "Home", href: "#" },
-  { name: "From HOD's Desk", href: "#" },
-  { name: "Faculty Achievements", href: "#" },
+  { name: "Home", href: "/" },
+  { name: "From HOD's Desk", href: "/hod" },
+  { name: "Faculty Achievements", href: "/facultyAchievements" },
   { name: "Student Achievements", href: "#" },
   { name: "Compendium", href: "#" },
 ];
@@ -59,13 +60,13 @@ export default function FacultyHero() {
           </div>
           <div className="hidden lg:flex lg:gap-x-12">
             {navigation.map((item) => (
-              <a
+              <Link
                 key={item.name}
                 href={item.href}
                 className="text-base font-semibold leading-6 tracking-tight"
               >
                 {item.name}
-              </a>
+              </Link>
             ))}
           </div>
           <div className="hidden lg:flex lg:flex-1 lg:justify-end"></div>
@@ -100,13 +101,13 @@ export default function FacultyHero() {
               <div className="-my-6 divide-y divide-gray-500/10">
                 <div className="space-y-2 py-6">
                   {navigation.map((item) => (
-                    <a
+                    <Link
                       key={item.name}
                       href={item.href}
                       className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                     >
                       {item.name}
-                    </a>
+                    </Link>
                   ))}
                 </div>
                 <div className="py-6">

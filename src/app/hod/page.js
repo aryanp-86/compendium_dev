@@ -4,10 +4,14 @@ import { Dialog } from "@headlessui/react";
 import Image from "next/image";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import SvgComponent5 from "../Components/SvgComponent5";
+import Link from "next/link";
+import { LampDemo } from "../ui/lamp";
+import { CardHover } from "../Components/CardHover";
+import Footer from "../Components/Footer";
 const navigation = [
-    { name: "Home", href: "#" },
-    { name: "From HOD's Desk", href: "#" },
-    { name: "Faculty Achievements", href: "#" },
+    { name: "Home", href: "/" },
+    { name: "From HOD's Desk", href: "/hod" },
+    { name: "Faculty Achievements", href: "/facultyAchievements" },
     { name: "Student Achievements", href: "#" },
     { name: "Compendium", href: "#" },
 ];
@@ -22,10 +26,9 @@ const Hod = () => {
     }, []);
     return (
         // <img src="https://i.ibb.co/47yyLMS/Untitled.jpg" alt="Untitled" border="0"></img>
-        <div className="hod w-full">
+        <div className="hod w-full overflow-y-clip">
             <header
-                className={`inset-x-0 top-0 z-50 -mb-16 nav-link ${scroll ? "sticky" : ""
-                    }`}
+                className="inset-x-0 h-20 text-white bg-black top-0 z-50 nav-link"
             >
                 <nav
                     className="flex items-center justify-between p-6 lg:px-8"
@@ -54,13 +57,13 @@ const Hod = () => {
                     </div>
                     <div className="hidden lg:flex lg:gap-x-12">
                         {navigation.map((item) => (
-                            <a
+                            <Link
                                 key={item.name}
                                 href={item.href}
                                 className="text-base font-semibold leading-6 tracking-tight"
                             >
                                 {item.name}
-                            </a>
+                            </Link>
                         ))}
                     </div>
                     <div className="hidden lg:flex lg:flex-1 lg:justify-end"></div>
@@ -95,13 +98,13 @@ const Hod = () => {
                             <div className="-my-6 divide-y divide-gray-500/10">
                                 <div className="space-y-2 py-6">
                                     {navigation.map((item) => (
-                                        <a
+                                        <Link
                                             key={item.name}
                                             href={item.href}
                                             className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                                         >
                                             {item.name}
-                                        </a>
+                                        </Link>
                                     ))}
                                 </div>
                                 <div className="py-6">
@@ -117,32 +120,15 @@ const Hod = () => {
                     </Dialog.Panel>
                 </Dialog>
             </header>
-            <SvgComponent5 />
-            <section className="overflow-hidden mt-16 ">
-                <div className="mx-auto px-4 py-2 lg:flex lg:items-center lg:flex-col  rounded-2xl">
-                    <div className="mx-auto text-center overflow-y-clip">
-                        <h1 className="bebas-font tracking-widest text-5xl font-extrabold lg:text-8xl mt-8">
-                            From HOD's Desk
-                        </h1>
-                    </div>
+            <div className="grid grid-cols-3 h-screen">
+                <div className="h-3/4 col-span-1 flex items-center justify-center bg-slate-950">
+                    <CardHover />
                 </div>
-            </section>
-
-            <div className="flex flex-col max-w-lg mt-12 items-center justify-center">
-                <a href="#" className="block">
-                    <img
-                        alt=""
-                        src="https://i.ibb.co/47yyLMS/Untitled.jpg"
-                        className="h-92 w-full object-fit border1 shadow-xl rounded-xl "
-                    />
-
-                    <h3 className="mt-4 text-lg font-bold text-gray-900 bebas-font tracking-widest lg:text-2xl text-center">Prof. (Dr.) Sandip R. Shinde</h3>
-
-                    <p className="mt-2 max-w-lg mb-4 text-base font-medium text-gray-700">
-                        Professor & Head, Department of Computer Engineering
-                    </p>
-                </a>
+                <div className="col-span-2 -z-20">
+                    <LampDemo />
+                </div>
             </div>
+            <Footer />
         </div>
     );
 };

@@ -338,7 +338,7 @@ export default function Home() {
   }, [])
 
   return (
-    <div className="prime">
+    <div className="prime overflow-x-clip">
       <HeroSection />
       <Gallery />
       <Banner />
