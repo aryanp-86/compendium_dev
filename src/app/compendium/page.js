@@ -6,6 +6,8 @@ import { Dialog } from "@headlessui/react";
 import Image from "next/image";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
+import { Content } from '../Components/Content';
+import { SparklesCore } from "../ui/sparkles";
 
 
 const navigation = [
@@ -25,7 +27,7 @@ const page = () => {
         });
     }, []);
     return (
-        <div className='compendium w-full'>
+        <div className='flex flex-col compendium w-full bg-black'>
             <header
                 className={`inset-x-0 top-0 z-50 nav-link ${scroll ? "sticky" : "bg-black text-white"
                     }`}
@@ -123,6 +125,20 @@ const page = () => {
             <div className="h-screen w-full bg-black bg-grid-white/[0.2]  relative flex items-center justify-center">
                 <div className="absolute pointer-events-none inset-0 flex items-center justify-center bg-black [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
                 <CompendiumHero />
+            </div>
+            <div className="h-full relative w-full bg-black flex flex-col items-center justify-center overflow-hidden rounded-md">
+                <div className="w-full absolute inset-0 h-full">
+                    <SparklesCore
+                        id="tsparticlesfullpage"
+                        background="transparent"
+                        minSize={0.5}
+                        maxSize={0.5}
+                        particleDensity={35}
+                        className="w-full h-full"
+                        particleColor="#FFFFFF"
+                    />
+                </div>
+                <Content />
             </div>
         </div>
     )
