@@ -7,7 +7,7 @@ import { authOptions } from "../../api/auth/[...nextauth]/route";
 export default async function Register() {
     const session = await getServerSession(authOptions);
 
-    if (session) redirect("/admin");
+    if (session) redirect("/v1/admin");
 
     return <RegisterForm />;
 }
