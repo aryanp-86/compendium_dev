@@ -2,13 +2,14 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Dialog } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-
 import { signOut } from "next-auth/react";
 import { useSession } from "next-auth/react";
 import BannerAdmin from "@/app/Components/BannerAdmin";
 import { AdminCards } from "@/app/Components/AdminCards";
+import { Fragment, useRef } from "react";
+import { Dialog, Transition } from "@headlessui/react";
+import { ExclamationTriangleIcon } from "@heroicons/react/24/outline";
 
 
 const navigation = [
@@ -17,7 +18,30 @@ const navigation = [
 
 
 const page = () => {
+    const handleDelete = async (e) => {
+        e.preventDefault();
+        try {
+            const resUserDelete = await fetch("api/admin", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ _id: props._id }),
+            });
+            if (resUserDelete.status == 200) {
+                props.setKey((currentValue) => currentValue + 1);
+                console.log(resUserDelete.status);
+            }
+        } catch (error) {
+            console.log("Error during deleting: ", error);
+        }
+    };
+
+    const [open, setOpen] = useState(false);
+
+    const cancelButtonRef = useRef(null);
     const [data, setData] = useState([]);
+    const [key, setKey] = useState(0);
     useEffect(() => {
         const fetchArticles = async () => {
             try {
@@ -33,7 +57,7 @@ const page = () => {
             }
         };
         fetchArticles();
-    }, []);
+    }, [key]);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [scroll, setScroll] = useState(false);
     const { data: session } = useSession();
@@ -162,10 +186,11 @@ const page = () => {
             </Dialog>
         </header>
             <BannerAdmin name={session?.user?.name} />
-            <div className="grid grid-cols-3">
+
+            <div className="grid grid-cols-3" >
                 {data.map((item, index) => (
                     <div key={`content-${index}`} className="mb-10 ">
-                        <AdminCards name={item.name} photo={item.photo} content={item.content} title={item.title} />
+                        <AdminCards name={item.name} photo={item.photo} content={item.content} title={item.title} id={item._id} setKey={setKey} />
                     </div>
                 ))}
             </div>

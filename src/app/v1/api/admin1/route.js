@@ -4,16 +4,12 @@ import Article from "@/models/article";
 
 export async function POST(req) {
     try {
-        const { _id } = await req.json();
+        const { _id, name, title, photo, content } = await req.json();
         await connectMongoDB();
 
-        const result = await Article.deleteOne({ id: _id });
+        const result = await Article.findOneAndUpdate({ _id: _id }, { name, title, photo, content });
 
-        if (result.deletedCount === 1) {
-            return NextResponse.json({ message: "Deleted successfully" }, { status: 200 });
-        } else {
-            return NextResponse.json({ message: 'Document not found' }, { status: 404 });
-        }
+        return NextResponse.json({ message: "Edited successfully" }, { status: 200 });
     } catch (error) {
         console.error(error);
         return NextResponse.json(

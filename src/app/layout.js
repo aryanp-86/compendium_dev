@@ -1,7 +1,9 @@
 
 import { AuthProvider } from "@/Provider";
 import "./globals.css";
+import { ToastContainer, toast } from 'react-toastify';
 
+import 'react-toastify/dist/ReactToastify.css';
 
 export const metadata = {
   title: "Bits and Bytes",
@@ -14,6 +16,7 @@ export default function RootLayout({ children }) {
       <body className="poppins-font">
         <AuthProvider>
           {children}
+          <ToastContainer />
         </AuthProvider>
       </body>
     </html>
