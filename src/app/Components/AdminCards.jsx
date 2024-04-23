@@ -41,8 +41,8 @@ export function AdminCards(props) {
         currId={currId}
       />
 
-      <div className="flex items-center justify-center flex-col">
-        <BackgroundGradient className="rounded-[22px] max-w-sm p-4 sm:p-10 bg-zinc-900">
+      <div className="flex items-center justify-center flex-col h-full">
+        <BackgroundGradient className="rounded-[22px] max-w-sm min-h-[30rem] p-4 sm:p-10 bg-zinc-900 flex flex-col h-full">
           <Image
             src={props.photo}
             alt="jordans"
@@ -57,7 +57,7 @@ export function AdminCards(props) {
           <p className="text-sm text-white text-wrap overflow-clip">
             {props.content}
           </p>
-          <div className="flex items-center justify-between">
+          <div className="flex  justify-between mt-auto">
             <button
               className="group relative inline-flex justify-center items-center overflow-hidden rounded border border-current px-8 py-3  focus:outline-none focus:ring bg-green-500 text-black mt-4"
               onClick={() => handleDialog(props.id)}

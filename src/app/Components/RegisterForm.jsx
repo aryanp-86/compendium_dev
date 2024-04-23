@@ -6,6 +6,9 @@ import { useRouter } from "next/navigation";
 import { cn } from "@/utils/cn";
 import { Spotlight } from "../ui/spotlight";
 import { Meteors } from "../ui/meteors";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useForm } from "react-hook-form";
 
 export default function RegisterForm() {
   const [name, setName] = useState("");
@@ -15,7 +18,7 @@ export default function RegisterForm() {
 
   const router = useRouter();
 
-  const handleSubmit = async (e) => {
+  const handleSubmit1 = async (e) => {
     e.preventDefault();
 
     if (!name || !email || !password) {
@@ -62,7 +65,36 @@ export default function RegisterForm() {
       console.log("Error during registration: ", error);
     }
   };
-
+  const schema = yup.object().shape({
+    UserName: yup
+      .string()
+      .matches(/^[A-Za-z\s]+$/, "Name can only contain alphabets and spaces")
+      .min(5, "Name should be at least 5 characters!")
+      .required("Name is required!"),
+    UserEmail: yup
+      .string()
+      .email("Invalid email!!")
+      .matches(
+        /^[A-Za-z0-9._%+-]+@vit\.edu$/,
+        "Email must be from the @vit.edu domain"
+      )
+      .required("Email is required!"),
+    UserPass: yup
+      .string()
+      .required("Password is required")
+      .min(8, "Password must be at least 8 characters")
+      .matches(
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/,
+        "Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character"
+      ),
+  });
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
   return (
     <div className="h-screen w-full bg-black bg-grid-white/[0.2]  relative flex items-center justify-center">
       <div className="absolute pointer-events-none inset-0 flex items-center justify-center bg-black [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
@@ -92,7 +124,10 @@ export default function RegisterForm() {
           <h1 className="font-bold text-xl text-white text-center mb-4 relative z-50">
             Bits and Bytes
           </h1>
-          <form onSubmit={handleSubmit} className="flex flex-col gap-3">
+          <form
+            onSubmit={handleSubmit(handleSubmit1)}
+            className="flex flex-col gap-3"
+          >
             <label
               htmlFor="UserEmail"
               className="block overflow-hidden rounded-md border border-gray-200 px-3 py-2 shadow-sm focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600"
@@ -105,7 +140,10 @@ export default function RegisterForm() {
               <input
                 type="text"
                 id="UserName"
-                onChange={(e) => setName(e.target.value)}
+                {...register("UserName", {
+                  value: name,
+                  onChange: (e) => setName(e.target.value),
+                })}
                 placeholder="Enter full name"
                 className="mt-2 w-full text-gray-400 border-none bg-transparent p-0 focus:border-transparent focus:outline-none focus:ring-0 sm:text-sm"
               />
@@ -122,13 +160,16 @@ export default function RegisterForm() {
               <input
                 type="email"
                 id="UserEmail"
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="aryan@vit.edu(Only vit.edu mails)"
+                {...register("UserEmail", {
+                  value: email,
+                  onChange: (e) => setEmail(e.target.value),
+                })}
+                placeholder="Ex.aryan@vit.edu(Only vit.edu mails)"
                 className="mt-2 w-full border-none bg-transparent p-0 focus:border-transparent text-gray-400 focus:outline-none focus:ring-0 sm:text-sm"
               />
             </label>
             <label
-              htmlFor="UserEmail"
+              htmlFor="UserPass"
               className="block overflow-hidden rounded-md border border-gray-200 px-3 py-2 shadow-sm focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600"
             >
               <span className="text-sm poppins-font font-bold text-white">
@@ -139,7 +180,10 @@ export default function RegisterForm() {
               <input
                 type="password"
                 id="UserPass"
-                onChange={(e) => setPassword(e.target.value)}
+                {...register("UserPass", {
+                  value: password,
+                  onChange: (e) => setPassword(e.target.value),
+                })}
                 placeholder="Enter a password"
                 className="mt-2 w-full text-gray-400 border-none p-0 focus:border-transparent focus:outline-none focus:ring-0 sm:text-sm bg-transparent"
               />

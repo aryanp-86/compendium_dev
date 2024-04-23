@@ -165,7 +165,7 @@ const page = () => {
                                 </svg>
                             </span>
 
-                            <span className="text-sm tracking-widest poppins-font font-extrabold transition-all group-hover:ms-4 text-center">
+                            <span className="text-sm tracking-widest poppins-font font-extrabold rounded-xl transition-all group-hover:ms-4 text-center bg-white px-1 py-0.5 focus:outline-none">
                                 Log out
                             </span>
                         </button>)}</div>
