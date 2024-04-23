@@ -10,6 +10,7 @@ import { AdminCards } from "@/app/Components/AdminCards";
 import { Fragment, useRef } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { ExclamationTriangleIcon } from "@heroicons/react/24/outline";
+import Loader from "@/app/Components/Loader";
 
 
 const navigation = [
@@ -57,13 +58,21 @@ const page = () => {
             console.log("Error during searching: ", error);
         }
     }
+    const handleClear = async (e) => {
+        e.preventDefault();
+        setisSearch(false);
+        setName("");
+        setKey(curr => curr + 1);
+    }
     const [open, setOpen] = useState(false);
     const [name, setName] = useState("");
     const cancelButtonRef = useRef(null);
     const [data, setData] = useState([]);
+    const [isEmpty, setisEmpty] = useState(false)
     const [isSearch, setisSearch] = useState(false);
     const [searchData, setSearchData] = useState([])
     const [key, setKey] = useState(0);
+    const [isLoading, setisLoading] = useState(true)
     useEffect(() => {
         const fetchArticles = async () => {
             try {
@@ -72,7 +81,10 @@ const page = () => {
                 });
 
                 const cards = await resUserExists.json();
+
                 setData(cards);
+                setisLoading(false);
+                if (cards.length == 0) setisEmpty(true);
                 console.log(cards)
             } catch (error) {
                 console.log("Error fetching articles ", error);
@@ -92,8 +104,8 @@ const page = () => {
     return (
         <div className="bg-black w-full">
             <header
-                className={`inset-x-0 top-0 z-50 nav-link bg-black text-white ${scroll ? "sticky" : ""
-                    }`}
+                className="inset-x-0 top-0 z-20 nav-link text-white fixed bg-black"
+
             >
                 <nav
                     className="flex items-center justify-between p-6 lg:px-8"
@@ -208,8 +220,12 @@ const page = () => {
                     </Dialog.Panel>
                 </Dialog>
             </header>
-            <BannerAdmin name={session?.user?.name} />
-            <div className="mx-auto max-w-screen-xl bg-transparent px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
+            {isLoading && (<div className="h-screen bg-black w-full items-center justify-center flex ">
+                <Loader />
+            </div>)
+            }
+            {!isLoading && (<BannerAdmin name={session?.user?.name} />)}
+            {!isLoading && (<div className="mx-auto max-w-screen-xl bg-transparent px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
                 <div className="sm:flex sm:items-center sm:justify-between">
                     <div className="text-center sm:text-left">
                         <h1 className="text-2xl font-bold text-white sm:text-3xl">All articles</h1>
@@ -226,31 +242,34 @@ const page = () => {
                                 id="UserName"
                                 onChange={(e) => setName(e.target.value)}
                                 placeholder="Enter article name"
+                                value={name}
                                 className="mt-2 w-full text-gray-300 border-none bg-transparent p-1 focus:border-transparent focus:outline-none focus:ring-0 text-base"
                             />
                         </label>
                         <button
-                            className="block rounded-lg bg-white px-5 py-3 text-base font-bold transition hover:bg-indigo-700 focus:outline-none focus:ring"
+                            className="block rounded-lg bg-white px-5 py-3 text-base font-bold transition hover:bg-green-500 focus:outline-none focus:ring"
                             type="button"
                             onClick={handleSearch}
                         >
                             Search
                         </button>
                         <button
-                            className="block rounded-lg bg-red-500 px-5 py-3 text-base font-bold transition hover:bg-indigo-700 focus:outline-none focus:ring"
+                            className="block rounded-lg bg-red-500 px-5 py-3 text-base font-bold transition focus:outline-none focus:ring"
                             type="button"
-                            onClick={() => setisSearch(false)}
+                            onClick={handleClear}
                         >
                             Clear
                         </button>
                     </div>
                 </div>
-            </div>
-            <div className="h-screen w-full bg-black bg-grid-white/[0.2]  relative flex items-center flex-col">
+            </div>)}
+
+
+            {!isLoading && (<div className="w-full bg-black bg-grid-white/[0.2]  relative flex items-center flex-col mt-12 min-h-screen">
 
                 <div className="absolute pointer-events-none inset-0 flex items-center justify-center bg-black [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
 
-
+                {isEmpty && (<h1 className="text-2xl mt-12 font-bold text-white text-center tracking-wide">No articles to show</h1>)}
                 {!isSearch && (<div className="grid grid-cols-3 gap-16" >
                     {data.map((item, index) => (
                         <div key={`content-${index}`} className="">
@@ -262,16 +281,12 @@ const page = () => {
                 {isSearch && (<div className="grid grid-cols-3 gap-16" >
                     {searchData.map((item, index) => (
                         <div key={`content-${index}`} className="">
-                            <AdminCards name={item.name} photo={item.photo} content={item.content} title={item.title} id={item._id} setKey={setKey} />
+                            <AdminCards name={item.name} photo={item.photo} content={item.content} title={item.title} id={item._id} setKey={setKey} setisSearch={setisSearch} />
                         </div>
                     ))}
                 </div>)
                 }
-            </div>
-
-
-
-
+            </div>)}
         </div >
     )
 }

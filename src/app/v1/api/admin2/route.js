@@ -9,8 +9,8 @@ export async function POST(req) {
 
         const result = await Article.find({
             $or: [
-                { name: { $regex: name, $options: 'i' } },
-                { title: { $regex: name, $options: 'i' } },
+                { name: { $regex: name, } },
+                { title: { $regex: name } },
             ]
         })
         return NextResponse.json({ message: "Search successfully", data: result }, { status: 200, headers: { 'Content-Type': 'application/json' } });

@@ -4,37 +4,25 @@ import { BackgroundGradient } from "../ui/background-gradient";
 import Image from "next/image";
 import { toast } from "react-toastify";
 import DialogBox from "./DialogBox";
+import DeleteBox from "./DeleteBox";
 
 export function AdminCards(props) {
   const [open, setOpen] = useState(false);
+  const [deleteOpen, setDeleteOpen] = useState(false);
   const [currId, setcurrId] = useState("");
   const handleDialog = (id) => {
-    setOpen((prev) => !prev);
     setcurrId(props.id);
+    setOpen((prev) => !prev);
+
+    console.log(currId);
+  };
+  const handleDialogDelete = (id) => {
+    setcurrId(props.id);
+    setDeleteOpen((prev) => !prev);
+
     console.log(currId);
   };
   // const { name, photo, content, title } = props.editedData;
-  const handleDelete = async (e) => {
-    e.preventDefault();
-    try {
-      const resUserDelete = await fetch("api/admin", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ _id: props._id }),
-      });
-      if (resUserDelete.status == 200) {
-        props.setKey((currentValue) => currentValue + 1);
-        toast.success("Deleted Successfully!", {
-          position: "top-center",
-        });
-        console.log(resUserDelete.status);
-      }
-    } catch (error) {
-      console.log("Error during deleting: ", error);
-    }
-  };
 
   return (
     <>
@@ -44,6 +32,13 @@ export function AdminCards(props) {
         setKey={props.setKey}
         setOpen={setOpen}
         open={open}
+      />
+      <DeleteBox
+        setKey={props.setKey}
+        setOpen={setDeleteOpen}
+        open={deleteOpen}
+        setisSearch={props.setisSearch}
+        currId={currId}
       />
 
       <div className="flex items-center justify-center flex-col">
@@ -92,7 +87,7 @@ export function AdminCards(props) {
             <button
               className="group relative inline-flex justify-center items-center overflow-hidden rounded border border-current px-8 py-3  focus:outline-none focus:ring bg-red-500 text-black mt-4"
               href="#"
-              onClick={handleDelete}
+              onClick={() => handleDialogDelete(props.id)}
             >
               <span className="absolute -start-full transition-all group-hover:start-4">
                 <svg

@@ -2,7 +2,7 @@ import React from "react";
 
 const BannerAdmin = (props) => {
   return (
-    <header className="">
+    <div className="mt-12 z-50 bg-transparent text-white">
       <div className="px-4 py-8 sm:py-12 lg:px-8 bg-transparent">
         <div className="sm:flex sm:items-center sm:justify-center">
           <div className="text-left">
@@ -12,7 +12,7 @@ const BannerAdmin = (props) => {
           </div>
         </div>
       </div>
-    </header>
+    </div>
   );
 };
 

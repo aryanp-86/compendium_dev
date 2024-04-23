@@ -7,7 +7,7 @@ export async function POST(req) {
         const { _id } = await req.json();
         await connectMongoDB();
 
-        const result = await Article.deleteOne({ id: _id });
+        const result = await Article.deleteOne({ _id: _id });
 
         if (result.deletedCount === 1) {
             return NextResponse.json({ message: "Deleted successfully" }, { status: 200 });
