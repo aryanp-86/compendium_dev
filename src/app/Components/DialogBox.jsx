@@ -7,25 +7,23 @@ import { ExclamationTriangleIcon } from "@heroicons/react/24/outline";
 export default function DialogBox(props) {
   const { prevname, prevphoto, prevcontent, prevtitle } = props.prevdata;
   const [name, setName] = useState(prevname);
-  const [photo, setPhoto] = useState(prevphoto);
+  const [photo, setPhoto] = useState(null);
   const [content, setContent] = useState(prevcontent);
   const [title, setTitle] = useState(prevtitle);
   const cancelButtonRef = useRef(null);
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      const formData = new FormData();
+      formData.append("_id", props.currId);
+      formData.append("name", name);
+      formData.append("photo", photo);
+      formData.append("content", content);
+      formData.append("title", title);
       const resUserEdited = await fetch("api/admin1", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          _id: props.currId,
-          name,
-          photo,
-          content,
-          title,
-        }),
+
+        body: formData,
       });
       if (resUserEdited.status == 200) {
         props.setKey((currentValue) => currentValue + 1);
@@ -43,7 +41,7 @@ export default function DialogBox(props) {
     <Transition.Root show={props.open} as={Fragment}>
       <Dialog
         as="div"
-        className="relative z-10"
+        className="relative z-50"
         initialFocus={cancelButtonRef}
         onClose={props.setOpen}
       >
@@ -88,7 +86,7 @@ export default function DialogBox(props) {
                       </Dialog.Title>
                       <form
                         onSubmit={handleSubmit}
-                        className="flex flex-col gap-3"
+                        className="flex flex-col gap-3 z-50 min-w-3xl"
                       >
                         <label
                           htmlFor="UserEmail"
@@ -149,14 +147,20 @@ export default function DialogBox(props) {
                             {" "}
                             Photo{" "}
                           </span>
-
+                          {/* <ImageAccept setPhoto={setPhoto} photo={photo} /> */}
                           <input
+                            type="file"
+                            id="myFile"
+                            name="filename"
+                            onChange={(e) => setPhoto(e.target.files[0])}
+                          />
+                          {/* <input
                             type="text"
                             id="UserPhoto"
                             onChange={(e) => setPhoto(e.target.value)}
                             placeholder="Enter valid url"
                             className="mt-2 w-full text-gray-400 border-none p-0 focus:border-transparent focus:outline-none focus:ring-0 sm:text-sm bg-transparent"
-                          />
+                          /> */}
                         </label>
                         <div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
                           <button
