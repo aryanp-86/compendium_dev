@@ -5,8 +5,8 @@ import { useState } from "react";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { cn } from "@/utils/cn";
-import { Spotlight } from "../ui/spotlight";
-import { Meteors } from "../ui/meteors";
+import { Spotlight } from "@/app/ui/Spotlight";
+import { Meteors } from "@/app/ui/meteors";
 
 export default function LoginForm() {
   const [email, setEmail] = useState("");

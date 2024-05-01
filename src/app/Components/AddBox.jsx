@@ -2,7 +2,8 @@ import { Fragment, useRef, useState } from "react";
 import Link from "next/link";
 import { Dialog, Transition } from "@headlessui/react";
 import { toast } from "react-toastify";
-import { Meteors } from "../ui/meteors";
+
+import { Meteors } from "@/app/ui/meteors";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";

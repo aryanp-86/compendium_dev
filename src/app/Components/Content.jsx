@@ -1,8 +1,8 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import { TracingBeam } from "../ui/tracing-beam";
-import { SparklesCore } from "../ui/sparkles";
+import { TracingBeam } from "@/app/ui/tracing-beam";
+import { SparklesCore } from "@/app/ui/sparkles";
 
 export function Content(props) {
   const [data, setData] = useState([]);

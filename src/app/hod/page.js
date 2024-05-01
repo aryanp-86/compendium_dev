@@ -5,7 +5,7 @@ import Image from "next/image";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import SvgComponent5 from "../Components/SvgComponent5";
 import Link from "next/link";
-import { LampDemo } from "../ui/lamp";
+import { LampDemo } from "@/app/ui/lamp";
 import { CardHover } from "../Components/CardHover";
 import Footer from "../Components/Footer";
 const navigation = [

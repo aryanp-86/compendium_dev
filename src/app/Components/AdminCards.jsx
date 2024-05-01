@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { BackgroundGradient } from "../ui/background-gradient";
+import { BackgroundGradient } from "@/app/ui/background-gradient";
 import Image from "next/image";
 import { toast } from "react-toastify";
 import DialogBox from "./DialogBox";

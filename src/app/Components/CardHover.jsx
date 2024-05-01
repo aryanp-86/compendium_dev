@@ -2,9 +2,9 @@
 
 import Image from "next/image";
 import React from "react";
-import { CardBody, CardContainer, CardItem } from "../ui/3dcard";
+import { CardBody, CardContainer, CardItem } from "@/app/ui/3dcard";
 import Link from "next/link";
-import { TextRevealCard } from "../ui/text-reveal-card";
+import { TextRevealCard } from "@/app/ui/text-reveal-card";
 
 export function CardHover() {
   return (

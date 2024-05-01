@@ -1,5 +1,5 @@
 "use client";
-import { TextGenerateEffect } from "../ui/textGenerate";
+import { TextGenerateEffect } from "@/app/ui/textGenerate";
 
 const words = `Welcome to the latest edition of Bits and Bytes, where we delve into computing technology, literature, and digital art. As the Head of Computer Engineering, I'm excited to present our team's curated stories, insights, and achievements.
 
