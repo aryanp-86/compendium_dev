@@ -13,7 +13,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className="poppins-font">
+      <body className="poppins-font newMain">
         <AuthProvider>
           {children}
           <ToastContainer />

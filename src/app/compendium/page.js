@@ -7,7 +7,7 @@ import Image from "next/image";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import { Content } from '../Components/Content';
-import { SparklesCore } from "../ui/sparkles";
+import { SparklesCore } from "@/app/ui/sparkles";
 
 
 const navigation = [

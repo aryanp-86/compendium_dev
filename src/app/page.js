@@ -9,12 +9,13 @@ import Strategies from "./Components/Strategies";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 
-gsap.registerPlugin(ScrollTrigger);
-import('gsap/ScrollTrigger').then(({ ScrollTrigger }) => {
-  ScrollTrigger.defaults({ scroller: window });
-});
+
+
 export default function Home() {
   useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    ScrollTrigger.defaults({ scroller: ".newMain" });
     const tl1 = gsap.timeline();
     tl1
       .fromTo(".nav-link",
@@ -340,7 +341,7 @@ export default function Home() {
   }, [])
 
   return (
-    <div className="prime overflow-x-clip">
+    <div className="prime overflow-x-clip w-full h-full">
       <HeroSection />
       <Gallery />
       <Banner />
