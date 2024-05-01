@@ -12,8 +12,7 @@ const navigation = [
   { name: "Home", href: "/" },
   { name: "From HOD's Desk", href: "/hod" },
   { name: "Faculty Achievements", href: "/facultyAchievements" },
-  { name: "Student Achievements", href: "#" },
-  { name: "Compendium", href: "#" },
+  { name: "Compendium", href: "/compendium" },
 ];
 
 export default function FacultyHero() {
@@ -27,10 +26,10 @@ export default function FacultyHero() {
   }, []);
 
   return (
-    <div className="bg-white">
+    <div className="bg-white z-50">
       <header
-        className={`inset-x-0 top-0 z-50 -mb-16 nav-link ${
-          scroll ? "sticky" : ""
+        className={`inset-x-0 top-0 fixed z-50 nav-link ${
+          scroll ? "sticky" : "text-black"
         }`}
       >
         <nav
@@ -123,8 +122,7 @@ export default function FacultyHero() {
           </Dialog.Panel>
         </Dialog>
       </header>
-
-      <div className="relative isolate px-6 pt-14 lg:px-8">
+      <div className="relative  isolate px-6 pt-14 lg:px-8">
         <div
           className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
           aria-hidden="true"
@@ -138,10 +136,10 @@ export default function FacultyHero() {
           />
         </div>
         <div className="flex items-start justify-start my-4">
-          <div className="grid grid-cols-3">
+          <div className="grid lg:grid-cols-3 grid-cols-1">
             <div className="col-span-1 flex flex-col items-start justify-center max-w-3xl">
               <SvgComponent5 />
-              <h1 className="text-4xl font-bold bebas-font tracking-wider leading-normal  text-gray-900 lg:text-8xl">
+              <h1 className="text-4xl font-bold bebas-font tracking-wider leading-normal  text-gray-900 lg:text-8xl lg:text-left text-center">
                 Faculty Achievements
               </h1>
               <p className="mt-6 text-lg text-left leading-8 text-gray-600">
@@ -150,12 +148,12 @@ export default function FacultyHero() {
                 inspiring excellence.
               </p>
               <div className="mt-10 flex items-start justify-start gap-x-6">
-                <a
+                {/* <a
                   href="#"
                   className="rounded-md bg-black px-3.5 py-2.5 text-xl font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 "
                 >
                   Read More
-                </a>
+                </a> */}
               </div>
             </div>
             <div className="col-span-2 flex items-center justify-center">

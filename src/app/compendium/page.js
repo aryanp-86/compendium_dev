@@ -14,7 +14,6 @@ const navigation = [
     { name: "Home", href: "/" },
     { name: "From HOD's Desk", href: "/hod" },
     { name: "Faculty Achievements", href: "/facultyAchievements" },
-    { name: "Student Achievements", href: "#" },
     { name: "Compendium", href: "/compendium" },
 ];
 const page = () => {

@@ -5,7 +5,7 @@ import { SparklesCore } from "../ui/sparkles";
 export function CompendiumHero() {
   return (
     <div className="h-screen w-full bg-transparent flex flex-col items-center justify-center overflow-hidden rounded-md">
-      <h1 className="md:text-7xl text-3xl lg:text-9xl font-bold text-center text-white relative z-20 bebas-font tracking-wider">
+      <h1 className="md:text-7xl text-6xl lg:text-9xl font-bold text-center text-white relative z-20 bebas-font tracking-wider">
         Bits and Bytes
       </h1>
       <div className="w-[60rem] h-40 relative">

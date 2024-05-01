@@ -7,36 +7,34 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 
-export default function DialogBox(props) {
-  const { prevname, prevphoto, prevcontent, prevtitle } = props.prevdata;
-  const [name, setName] = useState(prevname);
+export default function AddBox(props) {
+  const [name, setName] = useState("");
   const [photo, setPhoto] = useState(null);
-  const [content, setContent] = useState(prevcontent);
-  const [title, setTitle] = useState(prevtitle);
+  const [content, setContent] = useState("");
+  const [title, setTitle] = useState("");
   const cancelButtonRef = useRef(null);
   const handleSubmit1 = async (e) => {
     try {
       const formData = new FormData();
-      formData.append("_id", props.currId);
       formData.append("name", name);
       formData.append("photo", photo);
       formData.append("content", content);
       formData.append("title", title);
-      const resUserEdited = await fetch("api/admin1", {
+      const resUserAdded = await fetch("api/add", {
         method: "POST",
 
         body: formData,
       });
-      if (resUserEdited.status == 200) {
+      if (resUserAdded.status == 200) {
         props.setKey((currentValue) => currentValue + 1);
-        toast.success("Edited Successfully!", {
+        toast.success("Added Successfully!", {
           position: "top-center",
         });
-        props.setOpen(false);
-        console.log(resUserEdited.status);
+        props.setAddOpen(false);
+        console.log(resUserAdded.status);
       }
     } catch (error) {
-      console.log("Error during deleting: ", error);
+      console.log("Error during adding: ", error);
     }
   };
   console.log(name, content, title);
@@ -63,8 +61,8 @@ export default function DialogBox(props) {
       .required("Content is required!")
       .min(400, "Content should be at least 400 characters!")
       .matches(
-        /^[A-Za-z\s]+$/,
-        "Message can only contain alphabets and spaces!"
+        /^[a-zA-Z0-9\s]+$/,
+        "Message can only contain alphanumeric characters and spaces!"
       ),
   });
   const {
@@ -75,12 +73,12 @@ export default function DialogBox(props) {
     resolver: yupResolver(schema),
   });
   return (
-    <Transition.Root show={props.open} as={Fragment}>
+    <Transition.Root show={props.addOpen} as={Fragment}>
       <Dialog
         as="div"
         className="relative z-50"
         initialFocus={cancelButtonRef}
-        onClose={props.setOpen}
+        onClose={props.setAddOpen}
       >
         <Transition.Child
           as={Fragment}
@@ -233,12 +231,12 @@ export default function DialogBox(props) {
                           type="submit"
                           className="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-bases font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto"
                         >
-                          Edit
+                          Add
                         </button>
                         <button
                           type="button"
                           className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-base font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto"
-                          onClick={() => props.setOpen(false)}
+                          onClick={() => props.setAddOpen(false)}
                           ref={cancelButtonRef}
                         >
                           Cancel

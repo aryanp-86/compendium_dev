@@ -215,7 +215,7 @@ export default function FacultyAchievement() {
     return () => callData();
   }, []);
   return (
-    <div className="faculty select-none w-full">
+    <div className="faculty w-full">
       <FacultyHero />
       <section className="overflow-hidden mt-16">
         <div className="mx-auto  px-4 py-2 lg:flex lg:items-center lg:flex-col">
@@ -228,7 +228,7 @@ export default function FacultyAchievement() {
       </section>
       <div className="flex flex-col p-12 ">
         <div className="rounded-lg">
-          <div className="overflow-x-clip rounded-md mt-8">
+          <div className="lg:overflow-x-clip rounded-md mt-8">
             <table className="min-w-full divide-x-2  text-lg border-r-2">
               <thead className="text-left border-4 border-slate-600">
                 <tr className="underline underline-offset-4">

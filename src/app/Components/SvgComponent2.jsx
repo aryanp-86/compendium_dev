@@ -9,7 +9,7 @@ const SvgComponent2 = () => {
       xmlnsxlink="http://www.w3.org/1999/xlink"
       xmlnssvgjs="http://svgjs.dev/svgjs"
       viewBox="0 0 1422 800"
-      className="absolute -z-20 svg2"
+      className="absolute -z-20 svg2 min-h-screen max-w-full"
     >
       <defs>
         <linearGradient

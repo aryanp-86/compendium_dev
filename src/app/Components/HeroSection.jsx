@@ -11,8 +11,8 @@ const navigation = [
   { name: "Home", href: "/" },
   { name: "From HOD's Desk", href: "/hod" },
   { name: "Faculty Achievements", href: "/facultyAchievements" },
-  { name: "Student Achievements", href: "/studentAchievements" },
-  { name: "Compendium", href: "#" },
+  // { name: "Student Achievements", href: "/studentAchievements" },
+  { name: "Compendium", href: "/compendium" },
 ];
 
 export default function HeroSection() {
@@ -26,12 +26,12 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <div className="main w-full h-screen select-none">
+    <div className="main w-full h-screen lg:mb-0 md:mb-16">
       <YourSvgComponent />
       <SvgComponent2 />
       <header
-        className={`inset-x-0 top-0 z-50 -mb-16 nav-link ${
-          scroll ? "sticky" : ""
+        className={`inset-x-0 top-0 z-50 nav-link ${
+          scroll ? "sticky" : "text-black"
         }`}
       >
         <nav
@@ -61,10 +61,12 @@ export default function HeroSection() {
           </div>
           <div className="hidden lg:flex lg:gap-x-12">
             {navigation.map((item) => (
-              <Link key={item.name} href={item.href}>
-                <p className="text-base font-semibold leading-6 tracking-tight">
-                  {item.name}
-                </p>
+              <Link
+                key={item.name}
+                href={item.href}
+                className="text-base font-semibold leading-6 tracking-tight"
+              >
+                {item.name}
               </Link>
             ))}
           </div>
@@ -100,10 +102,12 @@ export default function HeroSection() {
               <div className="-my-6 divide-y divide-gray-500/10">
                 <div className="space-y-2 py-6">
                   {navigation.map((item) => (
-                    <Link href={item.href}>
-                      <a className="text-base font-semibold leading-6 tracking-tight">
-                        {item.name}
-                      </a>
+                    <Link
+                      key={item.name}
+                      href={item.href}
+                      className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                    >
+                      {item.name}
                     </Link>
                   ))}
                 </div>
@@ -121,33 +125,36 @@ export default function HeroSection() {
         </Dialog>
       </header>
 
-      <div className="relative isolate px-6 pt-14 lg:px-8">
-        <div className="flex items-center lg:px-80 justify-center flex-col md:py-32 lg:py-48 py-56">
+      <div className="relative isolate px-6 lg:px-8 md:mb-8">
+        <div className="flex items-center lg:px-80 justify-center flex-col md:py-32 lg:py-36 py-56">
           <div className="hidden mb-8 lg:flex lg:justify-center items-center">
-            <div className="relative rounded-full px-3 py-1 text-sm leading-6 text-black font-extrabold ring-1 ring-gray-900/10 hover:ring-gray-900/20 shadow-xl border notification">
+            <div className="relative rounded-full px-3 py-1 text-sm leading-6 text-black font-extrabold ring-1 ring-gray-900/10 hover:ring-gray-900/20 shadow-xl border notification md:text-center">
               Announcing our latest edition of compendium.{" "}
-              <a href="#" className="font-semibold text-indigo-600">
+              <Link
+                href="/compendium"
+                className="font-semibold text-indigo-600"
+              >
                 <span className="absolute inset-0" aria-hidden="true" />
                 Read more <span aria-hidden="true">&rarr;</span>
-              </a>
+              </Link>
             </div>
           </div>
           <div className="text-center overflow-y-clip">
-            <h1 className="text-4xl bebas-font font-bold tracking-wider leading-normal text-gray-900 lg:text-8xl heading1">
+            <h1 className="md:text-6xl text-4xl bebas-font font-bold tracking-wider leading-normal text-gray-900 lg:text-8xl heading1">
               Bits and Bytes
             </h1>
-            <p className="mt-6 text-lg leading-8 text-gray-800 tracking-wider font-medium paragraph1">
+            <p className="mt-6 lg:text-lg md:text-sm leading-8 text-gray-800 tracking-wider font-medium paragraph1">
               The latest edition of Bits and Bytes, where we continue our
               journey of exploring computing technology, prose, poetry, folk,
               fiction, non-fiction, and digital literature.
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6 button1">
-              <a
-                href="#"
+              <Link
+                href="/compendium"
                 className="rounded-md bg-black px-3.5 py-2.5 text-xl font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 "
               >
                 Read More
-              </a>
+              </Link>
             </div>
           </div>
         </div>

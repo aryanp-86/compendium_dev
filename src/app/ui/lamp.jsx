@@ -16,7 +16,7 @@ export function LampDemo() {
             duration: 1,
             ease: "easeInOut",
           }}
-          className=" mt-12 bg-gradient-to-br from-slate-100 to-slate-400 py-4 bg-clip-text text-center text-4xl bebas-font font-medium tracking-wider leading-none text-transparent lg:text-7xl"
+          className="mt-48 lg:mt-12 bg-gradient-to-br from-slate-100 to-slate-400 py-4 bg-clip-text text-center text-3xl md:text-5xl bebas-font font-medium tracking-wider leading-none text-transparent lg:text-7xl"
         >
           From HOD's Desk
         </motion.h1>
@@ -31,11 +31,11 @@ export const LampContainer = ({ children, className }) => {
   return (
     <div
       className={cn(
-        "relative flex min-h-screen flex-col itaems-center justify-center overflow-hidden bg-slate-950 w-full z-0",
+        "relative flex lg:min-h-screen flex-col itaems-center justify-center overflow-hidden bg-slate-950 w-full z-0",
         className
       )}
     >
-      <div className="relative flex w-full mt-32 flex-1 scale-y-125 items-center justify-center isolate z-0 ">
+      <div className="relative flex w-full md:mt-48 lg:mt-32 flex-1 scale-y-125 items-center justify-center isolate z-0 ">
         <motion.div
           initial={{ opacity: 0.5, width: "15rem" }}
           whileInView={{ opacity: 1, width: "30rem" }}
@@ -95,7 +95,7 @@ export const LampContainer = ({ children, className }) => {
         <div className="absolute inset-auto z-40 h-44 w-full -translate-y-[12.5rem] bg-slate-950 "></div>
       </div>
 
-      <div className="relative z-50 flex -translate-y-40 flex-col items-center px-5">
+      <div className="relative z-50 text-sm flex -translate-y-40 flex-col items-center px-5">
         {children}
       </div>
     </div>

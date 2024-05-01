@@ -1,10 +1,11 @@
 "use client";
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 const Footer = () => {
   return (
-    <footer className="bg-black">
+    <footer className="bg-black z-50 absolute w-screen overflow-clip">
       <div className="relative mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8 lg:pt-24">
         <div className="absolute end-4 top-4 sm:end-6 sm:top-6 lg:end-8 lg:top-8">
           <a
@@ -48,30 +49,40 @@ const Footer = () => {
 
           <ul className="mt-12 flex flex-wrap justify-center gap-6 md:gap-8 lg:mt-0 lg:justify-end lg:gap-6">
             <li>
-              <a className="text-white transition hover:text-white/75" href="/">
+              <Link
+                className="text-white transition hover:text-white/75"
+                href="/"
+              >
+                {" "}
+                Home
+              </Link>
+            </li>
+            <li>
+              <Link
+                className="text-white transition hover:text-white/75"
+                href="/hod"
+              >
                 {" "}
                 From HOD's Desk
-              </a>
+              </Link>
             </li>
 
             <li>
-              <a className="text-white transition hover:text-white/75" href="/">
-                {" "}
+              <Link
+                className="text-white transition hover:text-white/75"
+                href="/facultyAchievements"
+              >
                 Faculty Achievements
-              </a>
+              </Link>
             </li>
 
             <li>
-              <a className="text-white transition hover:text-white/75" href="/">
-                {" "}
-                Student Achievements
-              </a>
-            </li>
-            <li>
-              <a className="text-white transition hover:text-white/75" href="/">
-                {" "}
+              <Link
+                className="text-white transition hover:text-white/75"
+                href="/compendium"
+              >
                 Compendium
-              </a>
+              </Link>
             </li>
           </ul>
         </div>

@@ -12,7 +12,6 @@ const navigation = [
     { name: "Home", href: "/" },
     { name: "From HOD's Desk", href: "/hod" },
     { name: "Faculty Achievements", href: "/facultyAchievements" },
-    { name: "Student Achievements", href: "#" },
     { name: "Compendium", href: "/compendium" },
 ];
 const Hod = () => {
@@ -25,10 +24,11 @@ const Hod = () => {
         });
     }, []);
     return (
-        // <img src="https://i.ibb.co/47yyLMS/Untitled.jpg" alt="Untitled" border="0"></img>
-        <div className="hod w-full overflow-y-clip">
+
+        <div className="hod w-full overflow-y-clip bg-black">
             <header
-                className="inset-x-0 h-20 text-white bg-black top-0 z-50 nav-link"
+                className={`inset-x-0 top-0 z-50 nav-link ${scroll ? "sticky" : "text-white bg-black"
+                    }`}
             >
                 <nav
                     className="flex items-center justify-between p-6 lg:px-8"
@@ -120,11 +120,11 @@ const Hod = () => {
                     </Dialog.Panel>
                 </Dialog>
             </header>
-            <div className="grid grid-cols-3 h-screen">
-                <div className="h-3/4 col-span-1 flex items-center justify-center bg-slate-950">
+            <div className="grid lg:grid-cols-3 md:grid-cols-3 grid-cols-1  lg:h-screen">
+                <div className="lg:h-3/4 lg:col-span-1 md:col-span-1 md:-mx-6 col-span-1 flex items-center justify-center bg-slate-950">
                     <CardHover />
                 </div>
-                <div className="col-span-2 -z-20">
+                <div className="lg:col-span-2 lg:max-h-[80rem] md:col-span-2 md:mx-6 col-span-1">
                     <LampDemo />
                 </div>
             </div>

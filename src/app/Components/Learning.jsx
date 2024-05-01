@@ -25,11 +25,11 @@ const Learning = () => {
             teammates in learning.
           </p>
         </div>
-        <div className="grid grid-cols-3">
-          <div className="mt-8 max-w-4xl grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-2 mr-auto col-span-2">
+        <div className="grid lg:grid-cols-3 grid-cols-1">
+          <div className="mt-8 max-w-4xl grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-2  mr-auto lg:col-span-2 col-span-1">
             <a
               className="block rounded-xl border border-gray-800 p-8 shadow-xl transition hover:border-pink-500/10 hover:shadow-pink-500/10 block1"
-              href="/services/digital-campaigns"
+              href="/services/digital-campaigns col-span-1"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -61,7 +61,7 @@ const Learning = () => {
             </a>
 
             <a
-              className="block rounded-xl border border-gray-800 p-8 shadow-xl transition hover:border-pink-500/10 hover:shadow-pink-500/10 block2"
+              className="block rounded-xl border border-gray-800 p-8 shadow-xl transition hover:border-pink-500/10 hover:shadow-pink-500/10 block2 col-span-1"
               href="/services/digital-campaigns"
             >
               <svg
@@ -94,7 +94,7 @@ const Learning = () => {
             </a>
 
             <a
-              className="block rounded-xl border border-gray-800 p-8 shadow-xl transition hover:border-pink-500/10 hover:shadow-pink-500/10 col-span-2 block3"
+              className="block rounded-xl border border-gray-800 p-8 shadow-xl transition hover:border-pink-500/10 hover:shadow-pink-500/10 col-span-1 lg:col-span-2 block3"
               href="/services/digital-campaigns"
             >
               <svg
@@ -126,7 +126,7 @@ const Learning = () => {
               </p>
             </a>
           </div>
-          <div className="ml-auto flex items-center justify-center">
+          <div className="ml-auto lg:flex md:flex hidden items-center justify-center">
             <Lottie animationData={animation} />
           </div>
         </div>
