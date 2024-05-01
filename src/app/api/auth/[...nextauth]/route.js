@@ -25,6 +25,8 @@ export const authOptions = {
 
                     if (!passwordsMatch) {
                         return null;
+                    } else {
+                        console.log("User found")
                     }
 
                     return user;
