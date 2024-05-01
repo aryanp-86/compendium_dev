@@ -10,7 +10,9 @@ import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
-ScrollTrigger.defaults({ scroller: ".prime" })
+import('gsap/ScrollTrigger').then(({ ScrollTrigger }) => {
+  ScrollTrigger.defaults({ scroller: window });
+});
 export default function Home() {
   useEffect(() => {
     const tl1 = gsap.timeline();
