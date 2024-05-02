@@ -3,6 +3,20 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  overflow: scroll;
+  overflow-x: hidden;
+  scrollbar-width: none; /* Firefox */
+}
+::-webkit-scrollbar {
+  width: 0; /* Remove scrollbar space */
+  background: transparent; /* Optional: just make scrollbar invisible */
+}
+/* Optional: show position indicator in red */
+::-webkit-scrollbar-thumb {
+  background: #ff0000;
+}
+
 * {
   box-sizing: border-box;
   marhin: 0;
