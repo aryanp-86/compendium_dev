@@ -32,6 +32,7 @@ export default function AddBox(props) {
         });
         props.setAddOpen(false);
         props.setKey((currentValue) => currentValue + 1);
+
         console.log(resUserAdded.status);
       }
     } catch (error) {
@@ -60,11 +61,8 @@ export default function AddBox(props) {
     UserContent: yup
       .string()
       .required("Content is required!")
-      .min(400, "Content should be at least 400 characters!")
-      .matches(
-        /^[a-zA-Z0-9\s]+$/,
-        "Message can only contain alphanumeric characters and spaces!"
-      ),
+      .min(50, "Content should be at least 50 characters!")
+      .max(400, "Content should be maximum 400 characters!"),
   });
   const {
     register,

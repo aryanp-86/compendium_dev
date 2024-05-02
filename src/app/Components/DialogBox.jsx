@@ -61,11 +61,8 @@ export default function DialogBox(props) {
     UserContent: yup
       .string()
       .required("Content is required!")
-      .min(400, "Content should be at least 400 characters!")
-      .matches(
-        /^[A-Za-z\s]+$/,
-        "Message can only contain alphabets and spaces!"
-      ),
+      .min(50, "Content should be at least 50 characters!")
+      .max(100, "Content should be maximum 100 characters!"),
   });
   const {
     register,

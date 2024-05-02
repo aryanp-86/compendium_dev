@@ -45,8 +45,7 @@ export function Content(props) {
                   className="rounded-lg mb-10 object-cover"
                 />
               )}
-
-              {item.content}
+              <p className="truncate">{item.content}</p>
             </div>
           </div>
         ))}
