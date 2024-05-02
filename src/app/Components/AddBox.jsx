@@ -27,11 +27,11 @@ export default function AddBox(props) {
         body: formData,
       });
       if (resUserAdded.status == 200) {
-        props.setKey((currentValue) => currentValue + 1);
         toast.success("Added Successfully!", {
           position: "top-center",
         });
         props.setAddOpen(false);
+        props.setKey((currentValue) => currentValue + 1);
         console.log(resUserAdded.status);
       }
     } catch (error) {

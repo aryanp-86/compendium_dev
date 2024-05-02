@@ -312,7 +312,7 @@ const page = () => {
                 <div className="absolute pointer-events-none inset-0 flex items-center justify-center bg-black [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
 
                 {isEmpty && (<h1 className="text-2xl mt-12 font-bold text-white text-center tracking-wide">No articles to show</h1>)}
-                {!isSearch && (<div className="grid grid-cols-1 lg:grid-cols-3 gap-16" >
+                {!isSearch && (<div className="grid grid-cols-1 lg:grid-cols-3 gap-16" key={key}>
                     {data.map((item, index) => (
                         <div key={`content-${index}`} className="">
                             <AdminCards name={item.name} photo={item.photo} content={item.content} title={item.title} id={item._id} setKey={setKey} />
