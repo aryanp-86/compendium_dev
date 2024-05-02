@@ -167,12 +167,24 @@ export default function FacultyAchievement() {
     function handleWorkshop(workshop) {
       const workshopTable = workshop.map(
         ({
-          name, type, sponser, facultyname, date, place, subject, notracks, noparticipants
+          name,
+          type,
+          sponser,
+          facultyname,
+          date,
+          place,
+          subject,
+          notracks,
+          noparticipants,
         }) => {
           return (
             <>
               <tr>
-                <td className=" px-4 py-2 text-gray-700" rowSpan={1} colSpan={1}>
+                <td
+                  className=" px-4 py-2 text-gray-700"
+                  rowSpan={1}
+                  colSpan={1}
+                >
                   {name}
                 </td>
                 <td className=" px-4 py-2 text-gray-700">{type}</td>
@@ -196,20 +208,22 @@ export default function FacultyAchievement() {
     const callData = async () => {
       const res = await getFacultyData();
       console.log(res);
-      const awardsTable = handleAwards(res.awards);
-      const booksTable = handleBooks(res.books);
-      const hIndexTable = handleHIndex(res.hIndex);
-      const workshopTable = handleWorkshop(res.workshop);
-      console.log(booksTable);
-      setData((prev) => {
-        return {
-          ...prev,
-          awards: awardsTable,
-          books: booksTable,
-          hIndex: hIndexTable,
-          workshop: workshopTable,
-        };
-      });
+      if (res) {
+        const awardsTable = handleAwards(res.awards);
+        const booksTable = handleBooks(res.books);
+        const hIndexTable = handleHIndex(res.hIndex);
+        const workshopTable = handleWorkshop(res.workshop);
+        console.log(booksTable);
+        setData((prev) => {
+          return {
+            ...prev,
+            awards: awardsTable,
+            books: booksTable,
+            hIndex: hIndexTable,
+            workshop: workshopTable,
+          };
+        });
+      }
     };
 
     return () => callData();
@@ -259,7 +273,7 @@ export default function FacultyAchievement() {
           </div>
 
           <div className="rounded-b-lg border-t border-gray-200 px-4 py-2 flex items-center justify-center">
-            <ol className="flex justify-end gap-5 text-lg text-center font-bold">
+            {/**     <ol className="flex justify-end gap-5 text-lg text-center font-bold">
               <li>
                 <a
                   href="#"
@@ -332,7 +346,7 @@ export default function FacultyAchievement() {
                   </svg>
                 </a>
               </li>
-            </ol>
+  </ol>*/}
           </div>
         </div>
       </div>
@@ -387,7 +401,7 @@ export default function FacultyAchievement() {
           </div>
 
           <div className="rounded-b-lg border-t border-gray-200 px-4 py-2 flex items-center justify-center">
-            <ol className="flex justify-end gap-5 text-lg text-center font-bold">
+            {/* <ol className="flex justify-end gap-5 text-lg text-center font-bold">
               <li>
                 <a
                   href="#"
@@ -460,7 +474,7 @@ export default function FacultyAchievement() {
                   </svg>
                 </a>
               </li>
-            </ol>
+            </ol> */}
           </div>
         </div>
       </div>
@@ -479,7 +493,6 @@ export default function FacultyAchievement() {
             <table className="divide-x-2 table-auto border-spacing-4 min-w-full text-lg border-r-2">
               <thead className="text-center border-4 border-slate-600">
                 <tr>
-
                   <th className="whitespace-pre-wrap px-4 py-2 font-medium text-gray-900">
                     Name
                   </th>
@@ -496,12 +509,14 @@ export default function FacultyAchievement() {
                 </tr>
               </thead>
 
-              <tbody className="divide-y divide-gray-800 text-center">{data.hIndex}</tbody>
+              <tbody className="divide-y divide-gray-800 text-center">
+                {data.hIndex}
+              </tbody>
             </table>
           </div>
 
           <div className="rounded-b-lg border-t border-gray-200 px-4 py-2 flex items-center justify-center">
-            <ol className="flex justify-end gap-5 text-lg text-center font-bold">
+            {/* <ol className="flex justify-end gap-5 text-lg text-center font-bold">
               <li>
                 <a
                   href="#"
@@ -574,7 +589,7 @@ export default function FacultyAchievement() {
                   </svg>
                 </a>
               </li>
-            </ol>
+            </ol> */}
           </div>
         </div>
       </div>
@@ -623,11 +638,13 @@ export default function FacultyAchievement() {
                 </tr>
               </thead>
 
-              <tbody className="divide-y divide-gray-800 text-center">{data.workshop}</tbody>
+              <tbody className="divide-y divide-gray-800 text-center">
+                {data.workshop}
+              </tbody>
             </table>
           </div>
           <div className="rounded-b-lg border-t border-gray-200 px-4 py-2 flex items-center justify-center">
-            <ol className="flex justify-end gap-5 text-lg text-center font-bold">
+            {/* <ol className="flex justify-end gap-5 text-lg text-center font-bold">
               <li>
                 <a
                   href="#"
@@ -700,11 +717,11 @@ export default function FacultyAchievement() {
                   </svg>
                 </a>
               </li>
-            </ol>
+            </ol> */}
           </div>
-
         </div>
       </div>
-      <Footer /></div>
+      <Footer />
+    </div>
   );
 }
