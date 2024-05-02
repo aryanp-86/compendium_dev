@@ -24,8 +24,7 @@ export function CardHover() {
             <CardItem
               translateZ={20}
               as={Link}
-              href="https://twitter.com/mannupaaji"
-              target="__blank"
+              href="#"
               className="px-4 md:px-12 rounded-xl items-center text-sm font-medium bebas-font text-white"
             >
               <TextRevealCard

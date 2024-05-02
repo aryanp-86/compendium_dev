@@ -9,8 +9,6 @@ import Strategies from "./Components/Strategies";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 
-
-
 export default function Home() {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
