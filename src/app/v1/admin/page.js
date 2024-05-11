@@ -84,7 +84,7 @@ const page = () => {
             try {
                 const resUserExists = await fetch("/compendium/api/getArticles", {
                     method: "GET",
-                });
+                }, { cache: 'no-store' });
 
                 const cards = await resUserExists.json();
                 console.log("New data ...", cards)
