@@ -87,7 +87,7 @@ const page = () => {
                 });
 
                 const cards = await resUserExists.json();
-
+                console.log("New data ...", cards)
                 setData(cards);
                 setisLoading(false);
                 console.log(key);
