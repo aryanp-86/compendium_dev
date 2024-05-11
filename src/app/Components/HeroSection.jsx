@@ -70,7 +70,33 @@ export default function HeroSection() {
               </Link>
             ))}
           </div>
-          <div className="hidden lg:flex lg:flex-1 lg:justify-end"></div>
+          <div className="hidden lg:flex lg:flex-1 lg:justify-end rounded-full">
+            <Link
+              className="group relative inline-flex justify-center items-center overflow-hidden  px-8 py-3  focus:outline-none focus:ring bg-black text-white rounded-full"
+              href="/v1/login"
+            >
+              <span className="absolute -start-full transition-all group-hover:start-4">
+                <svg
+                  className="size-5 rtl:rotate-180"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M17 8l4 4m0 0l-4 4m4-4H3"
+                  />
+                </svg>
+              </span>
+
+              <span className="text-sm tracking-widest poppins-font font-extrabold rounded-xl transition-all group-hover:ms-4 text-center bg-black px-1 py-0.5 focus:outline-none">
+                Log in
+              </span>
+            </Link>
+          </div>
         </nav>
         <Dialog
           as="div"
