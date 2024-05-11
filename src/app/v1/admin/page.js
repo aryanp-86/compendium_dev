@@ -90,6 +90,7 @@ const page = () => {
 
                 setData(cards);
                 setisLoading(false);
+                console.log(key);
                 if (cards.length == 0) setisEmpty(true);
                 console.log(cards)
             } catch (error) {
