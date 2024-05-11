@@ -52,7 +52,7 @@ export default function HeroSection() {
           <div className="flex lg:hidden">
             <button
               type="button"
-              className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-white"
+              className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-black"
               onClick={() => setMobileMenuOpen(true)}
             >
               <span className="sr-only">Open main menu</span>
@@ -109,10 +109,11 @@ export default function HeroSection() {
             <div className="flex items-center justify-between">
               <a href="#" className="-m-1.5 p-1.5">
                 <span className="sr-only">Your Company</span>
-                <img
-                  className="h-8 w-auto"
-                  src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-                  alt=""
+                <Image
+                  src="https://i.ibb.co/9whb0wS/vit-logo.png"
+                  width={32}
+                  height={32}
+                  alt="vit-logo"
                 />
               </a>
               <button
@@ -125,7 +126,7 @@ export default function HeroSection() {
               </button>
             </div>
             <div className="mt-6 flow-root">
-              <div className="-my-6 divide-y divide-gray-500/10">
+              <div className="-my-6 divide-y divide-gray-800">
                 <div className="space-y-2 py-6">
                   {navigation.map((item) => (
                     <Link
@@ -139,7 +140,7 @@ export default function HeroSection() {
                 </div>
                 <div className="py-6">
                   <a
-                    href="#"
+                    href="/v1/login"
                     className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                   >
                     Log in
