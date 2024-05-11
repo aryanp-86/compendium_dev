@@ -1,10 +1,12 @@
 import { connectMongoDB } from "@/utils/mongodb";
 import { NextResponse } from "next/server";
 import Article from "@/models/article";
+import { unstable_noStore } from "next/cache";
 
 
 
 export async function POST(req) {
+    unstable_noStore();
     try {
         const formData = await req.formData();
         const _id = formData.get("_id");
