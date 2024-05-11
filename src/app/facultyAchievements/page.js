@@ -226,7 +226,7 @@ export default function FacultyAchievement() {
       }
     };
 
-    return () => callData();
+    callData();
   }, []);
   return (
     <div className="faculty w-full">
