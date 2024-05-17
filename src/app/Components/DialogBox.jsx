@@ -8,11 +8,10 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 
 export default function DialogBox(props) {
-  const { prevname, prevphoto, prevcontent, prevtitle } = props.prevdata;
-  const [name, setName] = useState(prevname);
+  const [name, setName] = useState(props.prevdata.name);
   const [photo, setPhoto] = useState(null);
-  const [content, setContent] = useState(prevcontent);
-  const [title, setTitle] = useState(prevtitle);
+  const [content, setContent] = useState(props.prevdata.content);
+  const [title, setTitle] = useState(props.prevdata.title);
   const cancelButtonRef = useRef(null);
   const handleSubmit1 = async (e) => {
     try {
@@ -39,7 +38,7 @@ export default function DialogBox(props) {
       console.log("Error during deleting: ", error);
     }
   };
-  console.log(name, content, title);
+
   const schema = yup.object().shape({
     UserName: yup
       .string()
@@ -53,11 +52,7 @@ export default function DialogBox(props) {
     UserTitle: yup
       .string()
       .required("Content is required!")
-      .min(10, "Title should be at least 10 characters!")
-      .matches(
-        /^[A-Za-z0-9\s]+$/,
-        "Title can only contain alphabets and numbers!"
-      ),
+      .min(10, "Title should be at least 10 characters!"),
     UserContent: yup
       .string()
       .required("Content is required!")

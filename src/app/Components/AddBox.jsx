@@ -53,11 +53,7 @@ export default function AddBox(props) {
     UserTitle: yup
       .string()
       .required("Content is required!")
-      .min(10, "Title should be at least 10 characters!")
-      .matches(
-        /^[A-Za-z0-9\s]+$/,
-        "Title can only contain alphabets and numbers!"
-      ),
+      .min(10, "Title should be at least 10 characters!"),
     UserContent: yup
       .string()
       .required("Content is required!")
