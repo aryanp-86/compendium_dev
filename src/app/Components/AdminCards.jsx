@@ -8,6 +8,7 @@ import DeleteBox from "./DeleteBox";
 
 export function AdminCards(props) {
   const [open, setOpen] = useState(false);
+  const [isTruncated, setIsTruncated] = useState(true);
   const [deleteOpen, setDeleteOpen] = useState(false);
   const [currId, setcurrId] = useState("");
   const handleDialog = (id) => {
@@ -42,7 +43,7 @@ export function AdminCards(props) {
       />
 
       <div className="flex items-center justify-center flex-col h-fit">
-        <BackgroundGradient className="rounded-[22px] max-w-sm min-h-[30rem] max-h-[30rem] p-4 sm:p-10 bg-zinc-900 flex flex-col">
+        <BackgroundGradient className="rounded-[22px] max-w-sm min-h-[30rem] p-4 sm:p-10 bg-zinc-900 flex flex-col">
           <Image
             src={props.photo}
             alt="jordans"
@@ -54,9 +55,9 @@ export function AdminCards(props) {
             {props.title}
           </p>
 
-          <p className="text-sm text-white text-wrap overflow-hidden overflow-ellipsis">
-            {props.content}
-          </p>
+          <p className={`text-sm text-white ${isTruncated ? "truncate" : ""}`}>{props.content}</p>
+          <p onClick={()=> setIsTruncated((prev)=>!prev)} className="text-sm text-gray-500 hover:cursor-pointer hover:text-red-500 font-thin text-right truncate"> {isTruncated ? "Read more..." : "Read less..."}</p>
+
           <div className="flex justify-between mt-auto">
             <button
               className="group relative inline-flex justify-center items-center overflow-hidden rounded border border-current px-8 py-3  focus:outline-none focus:ring bg-green-500 text-black mt-4"
