@@ -1,14 +1,26 @@
 "use client";
 
-import Link from "next/link";
+
 import { useState } from "react";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
+import Link from "next/link";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import { Fragment, useRef } from "react";
+import { Dialog, Transition } from "@headlessui/react";
+import { ExclamationTriangleIcon } from "@heroicons/react/24/outline";
 import { cn } from "@/utils/cn";
 import { Spotlight } from "@/app/ui/Spotlight";
 import { Meteors } from "@/app/ui/meteors";
 import Loader from "@/app/Components/Loader";
+
 export default function LoginForm() {
+  const navigation = [
+
+  ];
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -46,6 +58,124 @@ export default function LoginForm() {
       )}
        {!isLoading && (<div className="h-screen w-full bg-black bg-grid-white/[0.2]  relative flex items-center justify-center">
         <div className="absolute pointer-events-none inset-0 flex items-center justify-center bg-black [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
+        <header
+                className="inset-x-0 top-0 z-20 nav-link text-white fixed bg-black"
+
+            >
+                <nav
+                    className="flex items-center justify-between p-6 lg:px-8"
+                    aria-label="Global"
+                >
+                    <div className="flex lg:flex-1">
+                        <a href="#" className="-m-1.5 p-1.5">
+                            <span className="sr-only">VIT Logo</span>
+                            <Image
+                                src="https://i.ibb.co/9whb0wS/vit-logo.png"
+                                width={32}
+                                height={32}
+                                alt="vit-logo"
+                            />
+                        </a>
+                    </div>
+                    <div className="flex lg:hidden">
+                        <button
+                            type="button"
+                            className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-white"
+                            onClick={() => setMobileMenuOpen(true)}
+                        >
+                            <span className="sr-only">Open main menu</span>
+                            <Bars3Icon className="h-6 w-6" aria-hidden="true" />
+                        </button>
+                    </div>
+                    <div className="hidden lg:flex lg:gap-x-12">
+                        {navigation.map((item) => (
+                            <Link key={item.name} href={item.href}>
+                                <p className="text-base font-semibold leading-6 tracking-tight">
+                                    {item.name}
+                                </p>
+                            </Link>
+                        ))}
+                    </div>
+
+                    <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+                        <Link
+                            className="group relative inline-flex justify-center items-center overflow-hidden rounded border border-current px-8 py-3  focus:outline-none focus:ring bg-white text-black"
+                            href="/"
+                           
+                        >
+                            <span className="absolute -start-full transition-all group-hover:start-4">
+                                <svg
+                                    className="size-5 rtl:rotate-180"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                >
+                                    <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth="2"
+                                        d="M17 8l4 4m0 0l-4 4m4-4H3"
+                                    />
+                                </svg>
+                            </span>
+
+                            <span className="text-sm tracking-widest poppins-font font-extrabold rounded-xl transition-all group-hover:ms-4 text-center bg-white px-1 py-0.5 focus:outline-none">
+                                Home
+                            </span>
+                        </Link></div>
+                </nav>
+                <Dialog
+                    as="div"
+                    className="lg:hidden"
+                    open={mobileMenuOpen}
+                    onClose={setMobileMenuOpen}
+                >
+                    <div className="fixed inset-0 z-50" />
+                    <Dialog.Panel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-black px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+                        <div className="flex items-center justify-between">
+                            <a href="#" className="-m-1.5 p-1.5">
+                                <span className="sr-only">Your Company</span>
+                                <Image
+                                src="https://i.ibb.co/9whb0wS/vit-logo.png"
+                                width={32}
+                                height={32}
+                                alt="vit-logo"
+                            />
+                            </a>
+                            <button
+                                type="button"
+                                className="-m-2.5 rounded-md p-2.5 text-gray-700"
+                                onClick={() => setMobileMenuOpen(false)}
+                            >
+                                <span className="sr-only">Close menu</span>
+                                <XMarkIcon className="h-6 w-6" aria-hidden="true" />
+                            </button>
+                        </div>
+                        <div className="mt-6 flow-root">
+                            <div className="-my-6 divide-y divide-gray-500/10">
+                                <div className="space-y-2 py-6">
+                                    {navigation.map((item) => (
+                                        <Link href={item.href}>
+                                            <a className="text-base font-semibold leading-6 tracking-tight">
+                                                {item.name}
+                                            </a>
+                                        </Link>
+                                    ))}
+                                </div>
+                                <div className="py-6">
+                                    <a
+                                        href="/"
+                                        className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-white"
+                                    >
+                                        Home
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </Dialog.Panel>
+                </Dialog>
+            </header>
         <Spotlight
           className="-top-40 left-0 md:left-60 md:-top-20"
           fill="white"

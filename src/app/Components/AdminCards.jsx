@@ -43,7 +43,11 @@ export function AdminCards(props) {
       />
 
       <div className="flex items-center justify-center flex-col h-fit">
+     
         <BackgroundGradient className="rounded-[22px] max-w-sm min-h-[30rem] p-4 sm:p-10 bg-zinc-900 flex flex-col">
+        <p className="text-base sm:text-xl text-white mb-1 dark:text-neutral-200">
+            {props.name}
+          </p>
           <Image
             src={props.photo}
             alt="jordans"
@@ -54,9 +58,15 @@ export function AdminCards(props) {
           <p className="text-base sm:text-xl text-white mt-4 mb-2 dark:text-neutral-200">
             {props.title}
           </p>
+          <hr className="my-2"></hr>
+         
 
           <p className={`text-sm text-white ${isTruncated ? "truncate" : ""}`}>{props.content}</p>
           <p onClick={()=> setIsTruncated((prev)=>!prev)} className="text-sm text-gray-500 hover:cursor-pointer hover:text-red-500 font-thin text-right truncate"> {isTruncated ? "Read more..." : "Read less..."}</p>
+          <hr />
+          <p className="text-xs hover:cursor-pointer hover:text-red-500 text-gray-400 mt-4 mb-2 dark:text-neutral-200">
+            {props.link}
+          </p>
 
           <div className="flex justify-between mt-auto">
             <button

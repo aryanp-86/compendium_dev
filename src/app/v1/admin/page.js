@@ -315,7 +315,7 @@ const page = () => {
                 {!isSearch && (<div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
                     {data.map((item, index) => (
                         <div key={`content-${index}`} className="">
-                            <AdminCards name={item.name} photo={item.photo} content={item.content} title={item.title} id={item._id} setKey={setKey} />
+                            <AdminCards name={item.name} photo={item.photo} content={item.content} title={item.title} id={item._id} link={item.link} setKey={setKey} />
                         </div>
                     ))}
                 </div>)
