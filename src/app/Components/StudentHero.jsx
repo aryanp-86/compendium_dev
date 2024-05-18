@@ -168,11 +168,11 @@ export default function FacultyHero() {
             <div className="col-span-1 flex flex-col items-start justify-center max-w-3xl">
               <SvgComponent5 />
               <h1 className="text-4xl font-bold bebas-font tracking-wider leading-normal  text-gray-900 lg:text-8xl lg:text-left text-center">
-                Faculty Achievements
+                Student Achievements
               </h1>
               <p className="mt-6 text-lg text-left leading-8 text-gray-600">
                 Discover the shining stars of our Computer Engineering
-                Department: Our exceptional faculty, driving innovation and
+                Department: Our exceptional Studetns, driving innovation and
                 inspiring excellence.
               </p>
               <div className="mt-10 flex items-start justify-start gap-x-6">
