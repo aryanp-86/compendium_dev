@@ -25,7 +25,7 @@ const Hod = () => {
     }, []);
     return (
 
-        <div className="hod w-full overflow-y-clip bg-black">
+        <div className="hod w-full overflow-y-clip bg-black" id="MainContent">
             <header
                 className={`inset-x-0 top-0 z-50 nav-link ${scroll ? "sticky" : "text-white bg-black"
                     }`}

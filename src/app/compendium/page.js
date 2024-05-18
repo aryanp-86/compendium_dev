@@ -8,6 +8,7 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import { Content } from '../Components/Content';
 import { SparklesCore } from "@/app/ui/sparkles";
+import Footer from "@/app/Components/Footer";
 
 
 const navigation = [
@@ -26,7 +27,7 @@ const page = () => {
         });
     }, []);
     return (
-        <div className='flex flex-col compendium w-full bg-black'>
+        <div className='flex flex-col compendium w-full bg-black' id="MainContent">
             <header
                 className={`inset-x-0 top-0 z-50 nav-link ${scroll ? "sticky" : "bg-black text-white"
                     }`}
@@ -165,6 +166,10 @@ const page = () => {
                     />
                 </div>
                 <Content />
+                
+            </div>
+            <div>
+            <Footer/>
             </div>
         </div>
     )

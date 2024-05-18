@@ -229,7 +229,7 @@ export default function FacultyAchievement() {
     callData();
   }, []);
   return (
-    <div className="faculty w-full overflow-hidden">
+    <div className="faculty w-full overflow-hidden " id="MainContent">
       <FacultyHero />
       <section className="overflow-hidden mt-16">
         <div className="mx-auto  px-4 py-2 lg:flex lg:items-center lg:flex-col">

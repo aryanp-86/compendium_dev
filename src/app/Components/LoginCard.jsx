@@ -239,7 +239,7 @@ export default function LoginForm() {
               </label>
 
               <button
-                className="group relative inline-flex justify-center items-center overflow-hidden rounded border border-current px-8 py-3 text-indigo-600 focus:outline-none focus:ring active:text-indigo-500 bg-[#3a404c]"
+                className="group relative inline-flex justify-center items-center overflow-hidden rounded border border-current px-8 py-3 text-black focus:outline-none focus:ring active:text-red-500 bg-white"
                 href="#"
               >
                 <span className="absolute -start-full transition-all group-hover:start-4">
@@ -259,7 +259,7 @@ export default function LoginForm() {
                   </svg>
                 </span>
 
-                <span className="text-sm tracking-widest poppins-font font-bold transition-all group-hover:ms-4 text-center text-white">
+                <span className="text-sm tracking-widest poppins-font font-bold transition-all group-hover:ms-4 text-center text-black">
                   Login
                 </span>
               </button>
@@ -269,13 +269,13 @@ export default function LoginForm() {
                 </div>
               )}
 
-              <Link
+              {/* <Link
                 className="text-sm text-gray-500 mt-3 poppins-font text-right"
                 href={"/v1/register"}
               >
                 Don't have an account?{" "}
                 <span className="underline">Register</span>
-              </Link>
+              </Link> */}
             </form>
 
             <Meteors number={20} />
