@@ -2,6 +2,7 @@ import React from "react";
 import { getStudentData } from "../../api/dbfuntions";
 import FacultyHero from "../Components/StudentHero";
 import Achievement from "../Components/Achievement";
+import Footer from "../Components/Footer";
 
 export default async function StudentAchievements() {
   const res = await getStudentData();
@@ -56,21 +57,23 @@ export default async function StudentAchievements() {
   const awardsTable = handleAwards(awards);
 
   return (
-    <div className=" select-none w-full">
+    <div className=" select-none w-full" id="MainContent">
       <FacultyHero />
-      <section className=" mt-16">
+     
+      <div className="w-full bg-black bg-grid-white/[0.2]  relative flex items-center flex-col mt-12 min-h-screen">
+      <section className="z-10 mt-16">
         <div className="mx-auto px-4 py-2 lg:flex lg:items-center lg:flex-col">
           <div className="mx-auto text-center overflow-y-clip">
-            <h1 className="bebas-font tracking-widest text-5xl font-extrabold lg:text-8xl">
+            <h1 className="bebas-font tracking-widest text-5xl font-extrabold lg:text-8xl text-white">
               Awards
             </h1>
           </div>
         </div>
       </section>
-      <div className="p-6 ">
-        <div>{awardsTable}</div>
+        <div className="z-10">{awardsTable}</div>
+        <div className="absolute pointer-events-none inset-0 flex items-center justify-center bg-black [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
       </div>
-      {/* Add hIndex section if needed */}
+      <div><Footer/></div>
     </div>
   );
 }

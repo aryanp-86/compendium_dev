@@ -27,7 +27,7 @@ export default function FacultyHero() {
   }, []);
 
   return (
-    <div className="bg-white z-50">
+    <div className="bg-white z-50 min-h-screen">
       <header
         className={`inset-x-0 top-0 fixed z-50 nav-link ${
           scroll ? "sticky" : "text-black"

@@ -16,7 +16,7 @@ export default function Achievement({ award }) {
   const formattedDate = `${day}-${month}-${dyear}`;
 
   return (
-    <div className="max-w-4xl mx-auto my-10 p-6 bg-white rounded-lg shadow-md">
+    <div className="max-w-4xl mx-auto my-10 p-6  rounded-lg shadow-md bg-black">
       <div className="flex flex-col md:flex-row items-start gap-6">
         <img
           src={event_photos}
@@ -26,22 +26,22 @@ export default function Achievement({ award }) {
 
         <div className="flex flex-col justify-between">
           <div>
-            <h3 className="text-2xl font-semibold text-gray-900">
+            <h3 className="text-2xl font-semibold text-white">
               {event_name}
             </h3>
-            <p className="mt-2 text-sm text-gray-600">
+            <p className="mt-2 text-lg text-white">
               Event Date: {formattedDate}
             </p>
-            <p className="mt-2 text-sm text-gray-600">Level: {level}</p>
-            <p className="mt-2 text-sm text-gray-600">
+            <p className="mt-2 text-base text-white">Level: {level}</p>
+            <p className="mt-2 text-base text-white">
               Position Won: {position_won}
             </p>
             {prize_amount && (
-              <p className="mt-2 text-sm text-gray-600">
+              <p className="mt-2 text-base text-white">
                 `Prize Amount: ${prize_amount}`
               </p>
             )}
-            <p className="mt-2 text-sm text-gray-600">
+            <p className="mt-2 text-base text-white">
               Team Members: {team_members}
             </p>
           </div>

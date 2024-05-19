@@ -29,8 +29,8 @@ const Footer = () => {
           </a>
         </div>
 
-        <div className="lg:flex lg:items-end lg:justify-between">
-          <div>
+        <div className="lg:flex lg:items-end lg:justify-between ">
+          <div className="flex justify-start flex-col">
             <div className="flex justify-center lg:justify-start">
               <Image
                 src="https://i.ibb.co/9whb0wS/vit-logo.png"
@@ -73,6 +73,15 @@ const Footer = () => {
                 href="/facultyAchievements"
               >
                 Faculty Achievements
+              </Link>
+            </li>
+
+            <li>
+              <Link
+                className="text-white transition hover:text-white/75"
+                href="/studentAchievements"
+              >
+                Student Achievements
               </Link>
             </li>
 
