@@ -1,36 +1,39 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+# Compendium - Next.js based CMS
 
-First, run the development server:
+- Bits & Bytes is a comprehensive content management system (CMS) designed to showcase the achievements of the faculty & students, including alumni of the Computer Engineering Department at VIT Pune. 
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- This platform also aims to provide the department's digital magazine, enabling the publication and management of articles and achievements seamlessly without requiring excess coding knowledge or contribution from the administrator staff managing the website. 
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- A full-stack Content Management System using Next.js, Mongoose ODM, MongoDB, Imgbb as a CDN, and Tailwind CSS for the UI, incorporating authentication with Next-Auth for role-based access control.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+## Production Deployment
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+https://compendium-dev1.vercel.app
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+## Features
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Uses the power of server side rendering and data caching to show magazine content.
+- Token based admin authentication using NextAuth.js
+- Responsive UI built using Aceternity UI and GSAP
+- Admin dashboard supports all CRUD operations along with search functionalities.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+## Screenshots
+
+![App Screenshot](https://i.ibb.co/CnyMNYw/Screenshot-2024-05-21-at-19-41-33-Bits-and-Bytes.png)
+
+![App Screenshot](https://i.ibb.co/3SkD1mf/Whats-App-Image-2024-05-20-at-8-52-48-PM.jpg)
+
+![App Screenshot](https://i.ibb.co/YLYs0ct/Whats-App-Image-2024-05-20-at-8-52-12-PM.jpg)
+
+
+## Authors
+
+- [Aryan Pokharkar](https://www.github.com/aryanp-86)
+- [Siddhesh Patil](https://www.github.com/siddheshp27)
+
