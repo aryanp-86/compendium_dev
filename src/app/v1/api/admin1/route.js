@@ -13,6 +13,7 @@ export async function POST(req) {
         const name = formData.get("name");
         const title = formData.get("title");
         const content = formData.get("content");
+        const link = formData.get("link");
         const photo = formData.get("photo");
         await connectMongoDB();
         const base64Photo = Buffer.from(await photo.arrayBuffer()).toString("base64");
@@ -30,7 +31,7 @@ export async function POST(req) {
 
         const result = await Article.findOneAndUpdate(
             { _id: _id },
-            { name, title, photo: photoUrl, content }
+            { name, title, photo: photoUrl, content, link }
         );
 
         return NextResponse.json({ message: "Edited successfully" }, { status: 200 });

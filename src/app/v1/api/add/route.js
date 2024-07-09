@@ -12,6 +12,7 @@ export async function POST(req) {
         const name = formData.get("name");
         const title = formData.get("title");
         const content = formData.get("content");
+        const link = formData.get("link");
         const photo = formData.get("photo");
         await connectMongoDB();
         const base64Photo = Buffer.from(await photo.arrayBuffer()).toString("base64");
@@ -27,7 +28,7 @@ export async function POST(req) {
         const imgbbData = await imgbbResponse.json();
         const photoUrl = imgbbData.data.display_url;
 
-        await Article.create({ name, title, photo: photoUrl, content });
+        await Article.create({ name, title, photo: photoUrl, content, link });
         return NextResponse.json({ message: "Added successfully" }, { status: 200 });
     } catch (error) {
         console.error(error);

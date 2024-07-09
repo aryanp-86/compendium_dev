@@ -12,6 +12,7 @@ export default function AddBox(props) {
   const [name, setName] = useState("");
   const [photo, setPhoto] = useState(null);
   const [content, setContent] = useState("");
+  const [link, setLink] = useState("");
   const [title, setTitle] = useState("");
   const cancelButtonRef = useRef(null);
   const handleSubmit1 = async (e) => {
@@ -20,6 +21,7 @@ export default function AddBox(props) {
       formData.append("name", name);
       formData.append("photo", photo);
       formData.append("content", content);
+      formData.append("link", link);
       formData.append("title", title);
       const resUserAdded = await fetch("api/add", {
         method: "POST",
@@ -39,7 +41,6 @@ export default function AddBox(props) {
       console.log("Error during adding: ", error);
     }
   };
-  console.log(name, content, title);
   const schema = yup.object().shape({
     UserName: yup
       .string()
@@ -59,6 +60,9 @@ export default function AddBox(props) {
       .required("Content is required!")
       .min(50, "Content should be at least 50 characters!")
       .max(400, "Content should be maximum 400 characters!"),
+    UserLink: yup
+      .string()
+      .required("Link is required!"),
   });
   const {
     register,
@@ -201,6 +205,31 @@ export default function AddBox(props) {
                       {errors.UserContent && (
                         <span className="text-red-500  text-base font-bold poppins-font tracking-normal">
                           {errors.UserContent.message}
+                        </span>
+                      )}
+                      <label
+                        htmlFor="UserLink"
+                        className="block overflow-hidden rounded-md border border-gray-200 px-3 py-2 shadow-sm focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600"
+                      >
+                        <span className="text-sm poppins-font font-bold text-white">
+                          {" "}
+                          Link{" "}
+                        </span>
+
+                        <input
+                          type="text"
+                          id="UserLink"
+                          {...register("UserLink", {
+                            value: link,
+                            onChange: (e) => setLink(e.target.value),
+                          })}
+                          placeholder="Enter article link"
+                          className="mt-2 w-full text-gray-400 border-none p-0 focus:border-transparent focus:outline-none focus:ring-0 sm:text-sm bg-transparent"
+                        />
+                      </label>
+                      {errors.UserLink && (
+                        <span className="text-red-500  text-base font-bold poppins-font tracking-normal">
+                          {errors.UserLink.message}
                         </span>
                       )}
                       <label
